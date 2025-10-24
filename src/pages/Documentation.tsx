@@ -87,133 +87,84 @@ const Documentation: React.FC = () => {
               <Separator className="my-6" />
 
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Méthodes</h3>
-
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `createDialog(options: DialogOptions): Dialog`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Crée et affiche une nouvelle boîte de dialogue.
-                  </p>
-                  <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
-                    <li>
-                      `options`: Un objet `DialogOptions` définissant le titre, le contenu et un rappel `onClose`.
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `registerDialog(dialog: Dialog)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Enregistre une boîte de dialogue existante auprès du gestionnaire.
-                    Généralement appelée en interne par la méthode `render()` de `Dialog`.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `toggleDialogMinimize(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Bascule l'état minimisé/restauré d'une boîte de dialogue.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `minimizeDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Minimise une boîte de dialogue spécifique.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `restoreDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Restaure une boîte de dialogue minimisée.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `toggleDialogExpand(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Bascule l'état agrandi/contracté d'une boîte de dialogue.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `expandDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Agrandit une boîte de dialogue à la taille maximale de la fenêtre.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `contractDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Restaure une boîte de dialogue agrandie à sa taille et position précédentes.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `closeDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Ferme et supprime une boîte de dialogue spécifique.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `unregisterDialog(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Désenregistre une boîte de dialogue du gestionnaire.
-                    Généralement appelée en interne par la méthode `close()` de `Dialog`.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `bringToFront(dialogId: string)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Amène une boîte de dialogue au premier plan (augmente son `z-index`).
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `initVanillaTabs(containerElement: HTMLElement)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Initialise le système d'onglets pour les boîtes de dialogue.
-                    Nécessite un élément DOM (`containerElement`) où les onglets seront rendus.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `onFocusChange(callback: (dialogId: string | null) => void)`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Définit un rappel qui sera appelé lorsque la boîte de dialogue focalisée change.
-                  </p>
-                </div>
-              </div>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[300px]">Méthode</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">`createDialog(options: DialogOptions): Dialog`</TableCell>
+                    <TableCell>
+                      Crée et affiche une nouvelle boîte de dialogue.
+                      <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
+                        <li>
+                          `options`: Un objet `DialogOptions` définissant le titre, le contenu et un rappel `onClose`.
+                        </li>
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`registerDialog(dialog: Dialog)`</TableCell>
+                    <TableCell>
+                      Enregistre une boîte de dialogue existante auprès du gestionnaire.
+                      Généralement appelée en interne par la méthode `render()` de `Dialog`.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`toggleDialogMinimize(dialogId: string)`</TableCell>
+                    <TableCell>Bascule l'état minimisé/restauré d'une boîte de dialogue.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`minimizeDialog(dialogId: string)`</TableCell>
+                    <TableCell>Minimise une boîte de dialogue spécifique.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`restoreDialog(dialogId: string)`</TableCell>
+                    <TableCell>Restaure une boîte de dialogue minimisée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`toggleDialogExpand(dialogId: string)`</TableCell>
+                    <TableCell>Bascule l'état agrandi/contracté d'une boîte de dialogue.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`expandDialog(dialogId: string)`</TableCell>
+                    <TableCell>Agrandit une boîte de dialogue à la taille maximale de la fenêtre.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`contractDialog(dialogId: string)`</TableCell>
+                    <TableCell>Restaure une boîte de dialogue agrandie à sa taille et position précédentes.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`closeDialog(dialogId: string)`</TableCell>
+                    <TableCell>Ferme et supprime une boîte de dialogue spécifique.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`unregisterDialog(dialogId: string)`</TableCell>
+                    <TableCell>
+                      Désenregistre une boîte de dialogue du gestionnaire.
+                      Généralement appelée en interne par la méthode `close()` de `Dialog`.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`bringToFront(dialogId: string)`</TableCell>
+                    <TableCell>Amène une boîte de dialogue au premier plan (augmente son `z-index`).</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`initVanillaTabs(containerElement: HTMLElement)`</TableCell>
+                    <TableCell>
+                      Initialise le système d'onglets pour les boîtes de dialogue.
+                      Nécessite un élément DOM (`containerElement`) où les onglets seront rendus.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`onFocusChange(callback: (dialogId: string | null) => void)`</TableCell>
+                    <TableCell>Définit un rappel qui sera appelé lorsque la boîte de dialogue focalisée change.</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
 
               <Separator className="my-6" />
 
@@ -349,49 +300,41 @@ const Documentation: React.FC = () => {
               <Separator className="my-6" />
 
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Méthodes</h3>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `render()`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Crée l'élément DOM de la boîte de dialogue et l'ajoute au corps du document.
-                    Enregistre également la boîte de dialogue auprès du `dialogManager`.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `toggleExpand()`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Bascule l'état agrandi/contracté de cette boîte de dialogue via le `dialogManager`.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `minimize()`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Minimise cette boîte de dialogue via le `dialogManager`.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `restore()`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Restaure cette boîte de dialogue via le `dialogManager`.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `close()`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Ferme cette boîte de dialogue, la supprime du DOM et la désenregistre du `dialogManager`.
-                  </p>
-                </div>
-              </div>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[200px]">Méthode</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">`render()`</TableCell>
+                    <TableCell>
+                      Crée l'élément DOM de la boîte de dialogue et l'ajoute au corps du document.
+                      Enregistre également la boîte de dialogue auprès du `dialogManager`.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`toggleExpand()`</TableCell>
+                    <TableCell>Bascule l'état agrandi/contracté de cette boîte de dialogue via le `dialogManager`.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`minimize()`</TableCell>
+                    <TableCell>Minimise cette boîte de dialogue via le `dialogManager`.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`restore()`</TableCell>
+                    <TableCell>Restaure cette boîte de dialogue via le `dialogManager`.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`close()`</TableCell>
+                    <TableCell>
+                      Ferme cette boîte de dialogue, la supprime du DOM et la désenregistre du `dialogManager`.
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </CardContent>
           </Card>
         </section>
