@@ -96,7 +96,7 @@ export class Dialog {
     // Expand/Restore Button
     this.expandButtonElement = document.createElement("button");
     this.expandButtonElement.className = "fab-dialog-control-button fab-dialog-expand-button";
-    this.expandButtonElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 0 0 0-2 2v3m18 0V5a2 0 0 0-2-2h-3m0 18h3a2 0 0 0 2-2v-3m-18 0v3a2 0 0 0 2 2h3"/></svg>`;
+    this.expandButtonElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-icon lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 0 0 0 2 2h3"/><path d="M16 21h3a2 0 0 0 2-2v-3"/></svg>`;
     this.expandButtonElement.onclick = (e) => {
       e.stopPropagation();
       this.toggleExpand();
