@@ -1,0 +1,28 @@
+// Variables pour les styles des boîtes de dialogue FAB
+:root {
+  // Couleurs
+  --fab-dialog-background: hsl(var(--background));
+  --fab-dialog-border: hsl(var(--border));
+  --fab-dialog-primary: hsl(var(--primary));
+  --fab-dialog-muted: hsl(var(--muted));
+  --fab-dialog-muted-foreground: hsl(var(--muted-foreground));
+  --fab-dialog-destructive: hsl(var(--destructive));
+  --fab-dialog-destructive-foreground: hsl(var(--destructive-foreground));
+  --fab-dialog-foreground: hsl(var(--foreground));
+
+  // Rayon de bordure
+  --fab-dialog-radius: var(--radius);
+
+  // Tailles
+  --fab-dialog-min-width: 50px;
+  --fab-dialog-min-height: 160px;
+  --fab-dialog-header-padding: 0.75rem;
+  --fab-dialog-content-padding: 1rem;
+  --fab-dialog-title-font-size: 1.125rem;
+  --fab-dialog-title-font-weight: 600;
+  --fab-dialog-close-button-padding: 0.25rem;
+  --fab-dialog-close-button-icon-size: 1.25rem;
+  --fab-dialog-resize-handle-size: 24px;
+  --fab-dialog-resize-handle-line-color: hsl(var(--muted-foreground));
+  --fab-dialog-resize-handle-line-opacity: 0.6;
+}
