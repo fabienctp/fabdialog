@@ -12,7 +12,7 @@ export class Dialog {
   public options: DialogOptions;
   public isMinimized: boolean = false;
   public isExpanded: boolean = false;
-  private _previousPosition: { left: string; top: string; width: string; height: string; } | null = null;
+  public _previousPosition: { left: string; top: string; width: string; height: string; } | null = null; // Made public for manager access
 
   private isDragging = false;
   private isResizing = false;
@@ -217,96 +217,15 @@ export class Dialog {
   }
 
   public toggleExpand() {
-    if (!this.dialogElement) return;
-
-    if (this.isMinimized) {
-      this.restore();
-    }
-
-    const expandButton = this.dialogElement.querySelector('.fab-dialog-expand-button');
-    if (!expandButton) return;
-
-    if (!this.isExpanded) {
-      this._previousPosition = {
-        left: this.dialogElement.style.left,
-        top: this.dialogElement.style.top,
-        width: this.dialogElement.style.width,
-        height: this.dialogElement.style.height,
-      };
-      this.dialogElement.style.left = '0';
-      this.dialogElement.style.top = '0';
-      this.dialogElement.style.width = '100vw';
-      this.dialogElement.style.height = '100vh';
-      this.dialogElement.style.transform = 'none';
-      this.dialogElement.classList.add('fab-dialog--expanded');
-      expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3m-18 0h3a2 2 0 0 1 2 2v3"/></svg>`;
-    } else {
-      if (this._previousPosition) {
-        this.dialogElement.style.left = this._previousPosition.left;
-        this.dialogElement.style.top = this._previousPosition.top;
-        this.dialogElement.style.width = this._previousPosition.width;
-        this.dialogElement.style.height = this._previousPosition.height;
-      } else {
-        const rect = this.dialogElement.getBoundingClientRect();
-        const initialWidth = Math.max(rect.width, 50);
-        const initialHeight = Math.max(rect.height, 160);
-        this.dialogElement.style.width = `${initialWidth}px`;
-        this.dialogElement.style.height = `${initialHeight}px`;
-        const initialLeft = (window.innerWidth - initialWidth) / 2;
-        const initialTop = (window.innerHeight - initialHeight) / 2;
-        this.dialogElement.style.left = `${initialLeft}px`;
-        this.dialogElement.style.top = `${initialTop}px`;
-      }
-      this.dialogElement.classList.remove('fab-dialog--expanded');
-      expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3m-18 0v3a2 2 0 0 0 2 2h3"/></svg>`;
-    }
-    this.isExpanded = !this.isExpanded;
-    dialogManager.updateVanillaTabs();
+    dialogManager.toggleDialogExpand(this.id);
   }
 
   public minimize() {
-    if (!this.dialogElement || this.isMinimized) return;
-
-    if (this.isExpanded) {
-      this.toggleExpand();
-    }
-
-    this.isMinimized = true;
-    this._previousPosition = {
-      left: this.dialogElement.style.left,
-      top: this.dialogElement.style.top,
-      width: this.dialogElement.style.width,
-      height: this.dialogElement.style.height,
-    };
-    document.body.removeChild(this.dialogElement);
-    dialogManager.onDialogStateChange(this.id);
+    dialogManager.minimizeDialog(this.id);
   }
 
   public restore() {
-    if (!this.dialogElement || !this.isMinimized) return;
-
-    this.isMinimized = false;
-    document.body.appendChild(this.dialogElement);
-
-    if (this._previousPosition) {
-      this.dialogElement.style.left = this._previousPosition.left;
-      this.dialogElement.style.top = this._previousPosition.top;
-      this.dialogElement.style.width = this._previousPosition.width;
-      this.dialogElement.style.height = this._previousPosition.height;
-      this.dialogElement.style.transform = "none";
-    } else {
-      const rect = this.dialogElement.getBoundingClientRect();
-      const initialWidth = Math.max(rect.width, 50);
-      const initialHeight = Math.max(rect.height, 160);
-      this.dialogElement.style.width = `${initialWidth}px`;
-      this.dialogElement.style.height = `${initialHeight}px`;
-      const initialLeft = (window.innerWidth - initialWidth) / 2;
-      const initialTop = (window.innerHeight - initialHeight) / 2;
-      this.dialogElement.style.left = `${initialLeft}px`;
-      this.dialogElement.style.top = `${initialTop}px`;
-      this.dialogElement.style.transform = "none";
-    }
-    dialogManager.bringToFront(this.id);
+    dialogManager.restoreDialog(this.id);
   }
 
   public close() {
