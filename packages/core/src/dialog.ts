@@ -79,6 +79,7 @@ export class Dialog {
   private setupDrag(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
       if (this.isResizing) return;
+      e.preventDefault(); // Prevent text selection
       e.stopPropagation();
       this.isDragging = true;
       this.offsetX = e.clientX - element.getBoundingClientRect().left;
@@ -91,6 +92,7 @@ export class Dialog {
 
     const onMouseMove = (e: MouseEvent) => {
       if (!this.isDragging) return;
+      e.preventDefault(); // Prevent text selection
 
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
@@ -125,6 +127,7 @@ export class Dialog {
   private setupResize(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
       if (this.isDragging) return;
+      e.preventDefault(); // Prevent text selection
       e.stopPropagation();
       this.isResizing = true;
       this.initialWidth = element.offsetWidth;
@@ -139,6 +142,7 @@ export class Dialog {
 
     const onMouseMove = (e: MouseEvent) => {
       if (!this.isResizing) return;
+      e.preventDefault(); // Prevent text selection
       const dx = e.clientX - this.initialMouseX;
       const dy = e.clientY - this.initialMouseY;
 
