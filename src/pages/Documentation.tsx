@@ -37,20 +37,7 @@ const Documentation: React.FC = () => {
                   npm install fab-dialog
                 </code>
               </pre>
-              <p className="mb-4 text-gray-700 dark:text-gray-300">
-                Pour publier le package sur npm, assurez-vous d'abord de le compiler :
-              </p>
-              <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
-                <code>
-                  cd packages/core<br />
-                  npm run build<br />
-                  npm publish
-                </code>
-              </pre>
-              <p className="mb-4 text-gray-700 dark:text-gray-300">
-                Le fichier `packages/core/package.json` est configuré avec la propriété `files` pour inclure uniquement les dossiers `dist` (contenant le code JavaScript compilé) et `src` (contenant les fichiers TypeScript pour les définitions de types) lors de la publication. Cela garantit que votre package est léger et contient tout le nécessaire pour les consommateurs.
-              </p>
-
+              
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Utilisation de base</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Importez le `dialogManager` et la classe `Dialog` depuis le package `fab-dialog`.
