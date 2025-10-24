@@ -21,14 +21,13 @@ export class Dialog {
 
   constructor(options: DialogOptions) {
     this.options = options;
-    this.id = `dyad-dialog-${Math.random().toString(36).substr(2, 9)}`; // Generate unique ID
+    this.id = `fab-dialog-${Math.random().toString(36).substr(2, 9)}`; // Generate unique ID with 'fab-' prefix
   }
 
   private createDialogElement(): HTMLElement {
     const dialog = document.createElement("div");
     dialog.id = this.id; // Assign ID to the DOM element
-    // Replaced Tailwind classes with a single semantic class and reduced min-width
-    dialog.className = "dyad-dialog";
+    dialog.className = "fab-dialog"; // Use 'fab-' prefix
     dialog.style.top = "50%";
     dialog.style.left = "50%";
     dialog.style.transform = "translate(-50%, -50%)";
@@ -45,17 +44,17 @@ export class Dialog {
     });
 
     const header = document.createElement("div");
-    header.className = "dyad-dialog-header"; // Replaced Tailwind classes
-    header.innerHTML = `<h3 class="dyad-dialog-title">${this.options.title}</h3>`;
+    header.className = "fab-dialog-header"; // Use 'fab-' prefix
+    header.innerHTML = `<h3 class="fab-dialog-title">${this.options.title}</h3>`; // Use 'fab-' prefix
 
     const closeButton = document.createElement("button");
-    closeButton.className = "dyad-dialog-close-button"; // Replaced Tailwind classes
+    closeButton.className = "fab-dialog-close-button"; // Use 'fab-' prefix
     closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
     closeButton.onclick = () => this.close();
     header.appendChild(closeButton);
 
     const contentWrapper = document.createElement("div");
-    contentWrapper.className = "dyad-dialog-content"; // Replaced Tailwind classes
+    contentWrapper.className = "fab-dialog-content"; // Use 'fab-' prefix
     if (typeof this.options.content === "string") {
       contentWrapper.innerHTML = this.options.content;
     } else {
@@ -63,7 +62,7 @@ export class Dialog {
     }
 
     const resizeHandle = document.createElement("div");
-    resizeHandle.className = "dyad-dialog-resize-handle"; // Replaced Tailwind classes
+    resizeHandle.className = "fab-dialog-resize-handle"; // Use 'fab-' prefix
     // No innerHTML for the icon, as requested
 
     dialog.appendChild(header);
@@ -126,8 +125,8 @@ export class Dialog {
       const dx = e.clientX - this.initialMouseX;
       const dy = e.clientY - this.initialMouseY;
 
-      // Reduced min-width to 256px (equivalent to Tailwind's min-w-64)
-      element.style.width = `${Math.max(this.initialWidth + dx, 256)}px`;
+      // Reduced min-width to 50px
+      element.style.width = `${Math.max(this.initialWidth + dx, 50)}px`;
       element.style.height = `${Math.max(this.initialHeight + dy, 160)}px`;
     };
 
