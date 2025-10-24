@@ -63,19 +63,19 @@ export class DialogManager {
 
     if (this._focusedDialogId === dialogId) {
       let newFocusedId: string | null = null;
+      // Try to find a non-minimized dialog to focus first
       for (const [id, dialog] of this.activeDialogs.entries()) {
         if (!dialog.isMinimized) {
           newFocusedId = id;
           break;
         }
       }
-      if (!newFocusedId && this.activeDialogs.size > 0) {
-        newFocusedId = this.activeDialogs.keys().next().value!;
-      }
 
       if (newFocusedId) {
         this.bringToFront(newFocusedId);
       } else {
+        // If no non-minimized dialogs are left, clear the focus.
+        // Do not bring a minimized dialog to the front automatically.
         this._focusedDialogId = null;
         this._focusChangeListener?.(null);
       }
