@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // Ajout de cet import
+import { ScrollArea } from "@/components/ui/scroll-area"; // Ajout de cet import
+import { Separator } from "@/components/ui/separator"; // Ajout de cet import
 
 interface DialogEvent {
   id: string;
@@ -57,12 +57,12 @@ const EventLog: React.FC = () => {
       <CardHeader>
         <CardTitle className="text-lg">Journal des événements de dialogue</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow overflow-hidden"> {/* Ajout de overflow-hidden */}
-        <ScrollArea className="h-full"> {/* Suppression de overflow-auto */}
+      <CardContent className="flex-grow overflow-hidden">
+        <ScrollArea className="h-full">
           {events.length === 0 ? (
-            <p className="text-sm text-muted-foreground p-4">Aucun événement de dialogue récent.</p> {/* Ajout de p-4 */}
+            <p className="text-sm text-muted-foreground p-4">Aucun événement de dialogue récent.</p>
           ) : (
-            <div className="space-y-2 p-4"> {/* Ajout de p-4 */}
+            <div className="space-y-2 p-4">
               {events.map((event) => (
                 <div key={event.id} className="text-sm">
                   <p>
