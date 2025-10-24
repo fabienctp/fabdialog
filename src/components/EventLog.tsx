@@ -57,8 +57,8 @@ const EventLog: React.FC = () => {
       <CardHeader>
         <CardTitle className="text-lg">Journal des événements de dialogue</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow p-0">
-        <ScrollArea className="h-full px-6 pb-6 overflow-auto">
+      <CardContent className="flex-grow"> {/* Removed p-0 to use default padding */}
+        <ScrollArea className="h-full overflow-auto"> {/* Removed px-6 pb-6 */}
           {events.length === 0 ? (
             <p className="text-sm text-muted-foreground">Aucun événement de dialogue récent.</p>
           ) : (
