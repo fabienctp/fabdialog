@@ -159,7 +159,10 @@
 
 /* Hover effect for close button in tabs */
 .fab-dialog-tab-close-button {
+  border-radius: var(--fab-dialog-tab-close-button-radius);
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
   &:hover {
     background-color: var(--fab-dialog-tab-close-button-hover-background);
+    color: var(--fab-dialog-tab-close-button-hover-foreground);
   }
 }
