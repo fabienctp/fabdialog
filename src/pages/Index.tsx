@@ -11,7 +11,7 @@ const Index = () => {
       <main className="flex-grow container mx-auto p-4 flex flex-col items-center">
         <HeroBanner /> {/* Display the HeroBanner */}
 
-        <div className="text-center bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md mb-8 w-full max-w-2xl">
+        <div className="text-center bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md mb-8 w-full">
           <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">Gestionnaire de Boîtes de Dialogue</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
             Créez, minimisez, restaurez et gérez vos boîtes de dialogue avec facilité.
