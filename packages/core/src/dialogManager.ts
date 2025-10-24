@@ -1,14 +1,23 @@
 import { Dialog } from "./dialog";
+import { VanillaDialogTabs } from "./vanillaDialogTabs"; // Import the new vanilla tabs class
 
 class DialogManager {
   private activeDialogs: Map<string, Dialog> = new Map();
   private currentMaxZIndex: number = 1000; // Starting z-index for dialogs
   private _focusChangeListener: ((dialogId: string | null) => void) | null = null; // Listener for focus changes
   private _focusedDialogId: string | null = null; // Keep track of the currently focused dialog ID
+  private _vanillaDialogTabs: VanillaDialogTabs | null = null; // Instance of vanilla tabs
+
+  // Method to initialize the vanilla tabs
+  initVanillaTabs(containerElement: HTMLElement) {
+    this._vanillaDialogTabs = new VanillaDialogTabs(containerElement, this);
+    this.updateVanillaTabs(); // Initial render of tabs
+  }
 
   registerDialog(dialog: Dialog) {
     this.activeDialogs.set(dialog.id, dialog);
     this.bringToFront(dialog.id); // Bring new dialog to front by default
+    this.updateVanillaTabs(); // Update tabs when a new dialog is registered
   }
 
   unregisterDialog(dialogId: string) {
@@ -26,8 +35,7 @@ class DialogManager {
         this._focusChangeListener?.(null);
       }
     }
-    // If the unregistered dialog was not the focused one, the current focused dialog remains focused.
-    // No action needed for _focusedDialogId or _focusChangeListener in this case.
+    this.updateVanillaTabs(); // Update tabs when a dialog is unregistered
   }
 
   private getHighestZIndex(): number {
@@ -68,6 +76,14 @@ class DialogManager {
         this._focusedDialogId = dialogId;
         this._focusChangeListener?.(dialogId);
       }
+      this.updateVanillaTabs(); // Update tabs when focus changes
+    }
+  }
+
+  // Helper to update the vanilla tabs
+  private updateVanillaTabs() {
+    if (this._vanillaDialogTabs) {
+      this._vanillaDialogTabs.updateTabs(Array.from(this.activeDialogs.values()), this._focusedDialogId);
     }
   }
 
