@@ -53,7 +53,7 @@ const EventLog: React.FC = () => {
   }, []);
 
   return (
-    <Card className="w-full max-w-md h-64 flex flex-col">
+    <Card className="w-full h-64 flex flex-col">
       <CardHeader>
         <CardTitle className="text-lg">Journal des événements de dialogue</CardTitle>
       </CardHeader>

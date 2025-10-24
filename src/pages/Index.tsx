@@ -24,7 +24,7 @@ const Index = () => {
 
         {/* Removed "Exemple de fonctionnalité 1" and "Exemple de fonctionnalité 2" cards */}
         
-        <div className="mt-8 w-full max-w-md">
+        <div className="mt-8 w-full">
           <EventLog /> {/* Display the event log */}
         </div>
       </main>
