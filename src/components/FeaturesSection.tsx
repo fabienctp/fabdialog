@@ -23,7 +23,7 @@ const features = [
   {
     icon: Rows3,
     title: "Onglets de Dialogue Intuitifs",
-    description: "Naviguez facilement entre les boîtes de dialogue ouvertes via une barre d'onglets dynamique et réactive.",
+    description: "Gérez sans effort une ou plusieurs boîtes de dialogue grâce au `DialogManager`, avec une navigation intuitive sous forme d'onglets dynamiques et réactifs.",
   },
   {
     icon: ScrollText,
