@@ -1,5 +1,5 @@
-import { DialogManager } from "./dialogManager"; // Corrected import to get the class type
-import { Dialog } from "./dialog"; // Import Dialog to get its structure
+import { DialogManager } from "./dialogManager";
+import { Dialog } from "./dialog";
 
 interface VanillaDialogTab {
   id: string;
@@ -18,7 +18,7 @@ export class VanillaDialogTabs {
   }
 
   private renderBaseStructure() {
-    this.containerElement.className = "fab-dialog-tabs-container"; // Add a class for styling
+    this.containerElement.className = "fab-dialog-tabs-container";
     this.containerElement.innerHTML = `
       <div class="fab-dialog-tabs-list"></div>
     `;
@@ -28,14 +28,13 @@ export class VanillaDialogTabs {
   public updateTabs(openDialogs: Dialog[], focusedDialogId: string | null) {
     if (!this.tabsListElement) return;
 
-    // Clear existing tabs
     this.tabsListElement.innerHTML = "";
 
     if (openDialogs.length === 0) {
-      this.containerElement.style.display = "none"; // Hide the container if no dialogs
+      this.containerElement.style.display = "none";
       return;
     } else {
-      this.containerElement.style.display = "flex"; // Show the container if dialogs exist
+      this.containerElement.style.display = "flex";
     }
 
     openDialogs.forEach((dialog) => {
@@ -55,8 +54,8 @@ export class VanillaDialogTabs {
       closeButton.className = "fab-dialog-tab-close-button";
       closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
       closeButton.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent tab selection when closing
-        this.dialogManager.unregisterDialog(dialog.id); // This will also close the dialog
+        e.stopPropagation();
+        this.dialogManager.closeDialog(dialog.id); // Changed to call closeDialog
       });
       tabElement.appendChild(closeButton);
 

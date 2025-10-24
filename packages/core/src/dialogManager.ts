@@ -1,4 +1,4 @@
-import { Dialog, DialogOptions } from "./dialog"; // Import DialogOptions as well
+import { Dialog, DialogOptions } from "./dialog";
 import { VanillaDialogTabs } from "./vanillaDialogTabs";
 
 export class DialogManager {
@@ -15,15 +15,23 @@ export class DialogManager {
 
   createDialog(options: DialogOptions): Dialog {
     const newDialog = new Dialog(options);
-    newDialog.render(); // Render the dialog to the DOM
-    this.registerDialog(newDialog); // Register it with the manager
-    return newDialog; // Return the dialog instance
+    newDialog.render();
+    this.registerDialog(newDialog);
+    return newDialog;
   }
 
   registerDialog(dialog: Dialog) {
     this.activeDialogs.set(dialog.id, dialog);
     this.bringToFront(dialog.id);
     this.updateVanillaTabs();
+  }
+
+  // New method to request a dialog to close itself
+  closeDialog(dialogId: string) {
+    const dialogToClose = this.activeDialogs.get(dialogId);
+    if (dialogToClose) {
+      dialogToClose.close(); // The Dialog instance handles its own DOM removal
+    }
   }
 
   unregisterDialog(dialogId: string) {
