@@ -99,3 +99,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Basic styles for the vanilla TS dialog */
+.dyad-dialog {
+  /* These are already in the JS, but good to have a fallback/reference */
+}
+
+.dyad-dialog-header {
+  /* These are already in the JS, but good to have a fallback/reference */
+}
+
+.dyad-dialog-close-button svg {
+  width: 1.25rem; /* 20px */
+  height: 1.25rem; /* 20px */
+}
