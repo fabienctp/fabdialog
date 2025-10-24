@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@my-app/core";
 import { dialogManager } from "@my-app/core/src/dialogManager"; // Ensure correct import path
 
 interface VanillaDialogWrapperProps {
@@ -17,18 +16,13 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
     if (tabsContainerRef.current) {
       dialogManager.initVanillaTabs(tabsContainerRef.current);
     }
-    // No need to subscribe to focus changes here, as VanillaDialogTabs handles it directly
-    // and this component doesn't need to react to individual dialog focus changes anymore.
-  }, []); // Run once on mount
+  }, []);
 
   const openNewDialog = () => {
-    const newDialog = new Dialog({
-      title: `${title} #${dialogManager.activeDialogs.size + 1}`, // Use manager's size for numbering
+    dialogManager.createDialog({
+      title: `${title} #${dialogManager.activeDialogs.size + 1}`,
       content: `${content} This is dialog number ${dialogManager.activeDialogs.size + 1}.`,
-      // onClose is now handled by dialogManager.unregisterDialog, which is called by VanillaDialogTabs
-      // when the close button is clicked.
     });
-    newDialog.render();
   };
 
   return (
@@ -37,7 +31,6 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
       <p className="mt-2 text-sm text-gray-500">
         Dialogs are now managed by the core library, including the tabs below.
       </p>
-      {/* This div will be the container for the vanilla dialog tabs */}
       <div ref={tabsContainerRef} className="w-full">
         {/* VanillaDialogTabs will render here */}
       </div>

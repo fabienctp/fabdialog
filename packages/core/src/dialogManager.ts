@@ -1,41 +1,44 @@
-import { Dialog } from "./dialog";
-import { VanillaDialogTabs } from "./vanillaDialogTabs"; // Import the new vanilla tabs class
+import { Dialog, DialogOptions } from "./dialog"; // Import DialogOptions as well
+import { VanillaDialogTabs } from "./vanillaDialogTabs";
 
-export class DialogManager { // Added 'export' keyword here
+export class DialogManager {
   private activeDialogs: Map<string, Dialog> = new Map();
-  private currentMaxZIndex: number = 1000; // Starting z-index for dialogs
-  private _focusChangeListener: ((dialogId: string | null) => void) | null = null; // Listener for focus changes
-  private _focusedDialogId: string | null = null; // Keep track of the currently focused dialog ID
-  private _vanillaDialogTabs: VanillaDialogTabs | null = null; // Instance of vanilla tabs
+  private currentMaxZIndex: number = 1000;
+  private _focusChangeListener: ((dialogId: string | null) => void) | null = null;
+  private _focusedDialogId: string | null = null;
+  private _vanillaDialogTabs: VanillaDialogTabs | null = null;
 
-  // Method to initialize the vanilla tabs
   initVanillaTabs(containerElement: HTMLElement) {
     this._vanillaDialogTabs = new VanillaDialogTabs(containerElement, this);
-    this.updateVanillaTabs(); // Initial render of tabs
+    this.updateVanillaTabs();
+  }
+
+  createDialog(options: DialogOptions): Dialog {
+    const newDialog = new Dialog(options);
+    newDialog.render(); // Render the dialog to the DOM
+    this.registerDialog(newDialog); // Register it with the manager
+    return newDialog; // Return the dialog instance
   }
 
   registerDialog(dialog: Dialog) {
     this.activeDialogs.set(dialog.id, dialog);
-    this.bringToFront(dialog.id); // Bring new dialog to front by default
-    this.updateVanillaTabs(); // Update tabs when a new dialog is registered
+    this.bringToFront(dialog.id);
+    this.updateVanillaTabs();
   }
 
   unregisterDialog(dialogId: string) {
     this.activeDialogs.delete(dialogId);
 
-    // If the unregistered dialog was the one currently focused
     if (this._focusedDialogId === dialogId) {
-      // If there are still active dialogs, focus the first one available
       if (this.activeDialogs.size > 0) {
-        const firstDialogId = this.activeDialogs.keys().next().value!; // Added non-null assertion here
-        this.bringToFront(firstDialogId); // This will update _focusedDialogId and notify listeners
+        const firstDialogId = this.activeDialogs.keys().next().value!;
+        this.bringToFront(firstDialogId);
       } else {
-        // No dialogs left, clear the focused dialog ID and notify listeners
         this._focusedDialogId = null;
         this._focusChangeListener?.(null);
       }
     }
-    this.updateVanillaTabs(); // Update tabs when a dialog is unregistered
+    this.updateVanillaTabs();
   }
 
   private getHighestZIndex(): number {
@@ -57,42 +60,35 @@ export class DialogManager { // Added 'export' keyword here
       const currentDialogZIndex = parseInt(dialogToFocus.dialogElement.style.zIndex || '0', 10);
       const highestZIndex = this.getHighestZIndex();
 
-      // Remove focused class from all dialogs
       this.activeDialogs.forEach(dialog => {
         dialog.dialogElement?.classList.remove('fab-dialog--focused');
       });
 
-      // Only update z-index if the current dialog is not already the highest
       if (currentDialogZIndex < highestZIndex || this.activeDialogs.size === 1) {
         this.currentMaxZIndex = highestZIndex + 1;
         dialogToFocus.dialogElement.style.zIndex = String(this.currentMaxZIndex);
       }
       
-      // Add focused class to the dialog brought to front
       dialogToFocus.dialogElement.classList.add('fab-dialog--focused');
 
-      // Notify if the focused dialog has changed
       if (this._focusedDialogId !== dialogId) {
         this._focusedDialogId = dialogId;
         this._focusChangeListener?.(dialogId);
       }
-      this.updateVanillaTabs(); // Update tabs when focus changes
+      this.updateVanillaTabs();
     }
   }
 
-  // Helper to update the vanilla tabs
   private updateVanillaTabs() {
     if (this._vanillaDialogTabs) {
       this._vanillaDialogTabs.updateTabs(Array.from(this.activeDialogs.values()), this._focusedDialogId);
     }
   }
 
-  // Method to set the focus change listener
   onFocusChange(callback: (dialogId: string | null) => void) {
     this._focusChangeListener = callback;
   }
 
-  // Method to get the currently focused dialog ID
   get focusedDialogId(): string | null {
     return this._focusedDialogId;
   }
