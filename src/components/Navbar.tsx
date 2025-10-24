@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Home, BookOpenText } from "lucide-react";
+import { Home, BookOpenText, PlayCircle } from "lucide-react"; // Import PlayCircle icon
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -16,6 +16,11 @@ const Navbar: React.FC = () => {
           <Button variant="ghost" asChild>
             <Link to="/">
               <Home className="mr-2 h-4 w-4" /> Accueil
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link to="/#dialog-manager-section"> {/* Link to the section ID */}
+              <PlayCircle className="mr-2 h-4 w-4" /> Tester FabDialog
             </Link>
           </Button>
           <Button variant="ghost" asChild>
