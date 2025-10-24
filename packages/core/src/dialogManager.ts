@@ -13,10 +13,21 @@ class DialogManager {
 
   unregisterDialog(dialogId: string) {
     this.activeDialogs.delete(dialogId);
+
+    // If the unregistered dialog was the one currently focused
     if (this._focusedDialogId === dialogId) {
-      this._focusedDialogId = null; // If the focused dialog is unregistered, clear focus
-      this._focusChangeListener?.(null); // Notify listeners
+      // If there are still active dialogs, focus the first one available
+      if (this.activeDialogs.size > 0) {
+        const firstDialogId = this.activeDialogs.keys().next().value;
+        this.bringToFront(firstDialogId); // This will update _focusedDialogId and notify listeners
+      } else {
+        // No dialogs left, clear the focused dialog ID and notify listeners
+        this._focusedDialogId = null;
+        this._focusChangeListener?.(null);
+      }
     }
+    // If the unregistered dialog was not the focused one, the current focused dialog remains focused.
+    // No action needed for _focusedDialogId or _focusChangeListener in this case.
   }
 
   private getHighestZIndex(): number {

@@ -31,30 +31,8 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
     };
   }, []); // Run once on mount and cleanup on unmount
 
-  useEffect(() => {
-    // This effect ensures that if the currently selected dialog is closed,
-    // another dialog (if available) is automatically selected and brought to front.
-    // It also handles the initial state when dialogs are first opened.
-
-    // If there are open dialogs but no dialog is currently selected/focused (e.g., after closing the last focused one)
-    if (openDialogInstances.length > 0 && !dialogManager.focusedDialogId) {
-      const firstDialogId = openDialogInstances[0].id;
-      dialogManager.bringToFront(firstDialogId); // This will update selectedDialogId via the listener
-    } else if (openDialogInstances.length === 0) {
-      // If all dialogs are closed, ensure no tab is selected
-      setSelectedDialogId(null);
-    } else if (dialogManager.focusedDialogId && !openDialogInstances.some(d => d.id === dialogManager.focusedDialogId)) {
-      // If the currently focused dialog (according to manager) was closed,
-      // select the first available dialog or null.
-      const newSelectedId = openDialogInstances[0]?.id || null;
-      if (newSelectedId) {
-        dialogManager.bringToFront(newSelectedId); // This will update selectedDialogId via the listener
-      } else {
-        setSelectedDialogId(null); // No dialogs left
-      }
-    }
-  }, [openDialogInstances]); // Only depend on openDialogInstances
-
+  // La logique de gestion du focus a été déplacée vers le dialogManager.
+  // Ce useEffect n'est plus nécessaire.
 
   const openNewDialog = () => {
     const newDialog = new Dialog({
@@ -69,13 +47,13 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
     });
     newDialog.render();
     setOpenDialogInstances((prevDialogs) => [...prevDialogs, newDialog]);
-    // The `bringToFront` call inside `newDialog.render()` will trigger the `onFocusChange` listener,
-    // which will then update `selectedDialogId`.
+    // L'appel `bringToFront` dans `newDialog.render()` déclenchera le listener `onFocusChange`,
+    // qui mettra ensuite à jour `selectedDialogId`.
   };
 
   const handleSelectDialog = (id: string) => {
-    // This will trigger the onFocusChange listener in the manager,
-    // which then updates the selectedDialogId state in this component.
+    // Cela déclenchera le listener onFocusChange dans le gestionnaire,
+    // qui mettra ensuite à jour l'état selectedDialogId dans ce composant.
     dialogManager.bringToFront(id);
   };
 
