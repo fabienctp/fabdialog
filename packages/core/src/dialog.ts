@@ -3,7 +3,7 @@ import { dialogManager } from "./dialogManager"; // Import the dialog manager
 export interface DialogOptions {
   title: string;
   content: string | HTMLElement;
-  onClose?: (dialogId: string) => void; // Modifié pour passer dialogId
+  onClose?: (dialogId: string) => void; // Correction : le callback onClose accepte maintenant dialogId
 }
 
 export class Dialog {
