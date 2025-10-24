@@ -157,8 +157,9 @@
   }
 }
 
-// Rotate icons for vertical scroll buttons
-.fab-dialog-tabs-container--left .fab-dialog-scroll-button svg,
-.fab-dialog-tabs-container--right .fab-dialog-scroll-button svg {
-  transform: rotate(90deg);
+/* Hover effect for close button in tabs */
+.fab-dialog-tab-close-button {
+  &:hover {
+    background-color: var(--fab-dialog-tab-close-button-hover-background);
+  }
 }
