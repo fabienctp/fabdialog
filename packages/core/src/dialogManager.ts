@@ -27,16 +27,24 @@ class DialogManager {
   }
 
   bringToFront(dialogId: string) {
-    const dialog = this.activeDialogs.get(dialogId);
-    if (dialog && dialog.dialogElement) {
-      const currentDialogZIndex = parseInt(dialog.dialogElement.style.zIndex || '0', 10);
+    const dialogToFocus = this.activeDialogs.get(dialogId);
+    if (dialogToFocus && dialogToFocus.dialogElement) {
+      const currentDialogZIndex = parseInt(dialogToFocus.dialogElement.style.zIndex || '0', 10);
       const highestZIndex = this.getHighestZIndex();
 
-      // Only update if the current dialog is not already the highest
+      // Remove focused class from all dialogs
+      this.activeDialogs.forEach(dialog => {
+        dialog.dialogElement?.classList.remove('fab-dialog--focused');
+      });
+
+      // Only update z-index if the current dialog is not already the highest
       if (currentDialogZIndex < highestZIndex || this.activeDialogs.size === 1) {
         this.currentMaxZIndex = highestZIndex + 1;
-        dialog.dialogElement.style.zIndex = String(this.currentMaxZIndex);
+        dialogToFocus.dialogElement.style.zIndex = String(this.currentMaxZIndex);
       }
+      
+      // Add focused class to the dialog brought to front
+      dialogToFocus.dialogElement.classList.add('fab-dialog--focused');
     }
   }
 }

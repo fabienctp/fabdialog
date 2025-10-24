@@ -12,6 +12,12 @@
   flex-direction: column;
   resize: none;
   overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Ajout de la transition */
+}
+
+.fab-dialog--focused {
+  box-shadow: 0 0 0 3px hsl(var(--primary)), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Anneau de focus */
+  border-color: hsl(var(--primary));
 }
 
 .fab-dialog-header { /* Updated prefix */
@@ -39,8 +45,8 @@
   transition-duration: 150ms; /* transition-colors */
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* transition-colors */
   &:hover {
-    background-color: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
   }
   svg {
     width: 1.25rem; /* 20px */
