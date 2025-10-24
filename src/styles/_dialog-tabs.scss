@@ -29,6 +29,7 @@
   }
   /* Hide scrollbar for Firefox */
   scrollbar-width: none;
+  text-align: left; /* Aligne le contenu inline-flex à gauche */
 }
 
 .fab-dialog-tabs-list {
