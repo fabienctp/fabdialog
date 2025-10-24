@@ -1,0 +1,37 @@
+"use client";
+
+import React from "react";
+import { Home, Info, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
+const Navbar: React.FC = () => {
+  return (
+    <nav className="bg-primary text-primary-foreground p-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center">
+        <Link to="/" className="text-2xl font-bold">
+          Mon App Dyad
+        </Link>
+        <div className="space-x-4">
+          <Button variant="ghost" asChild>
+            <Link to="/">
+              <Home className="mr-2 h-4 w-4" /> Accueil
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link to="/about">
+              <Info className="mr-2 h-4 w-4" /> À propos
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link to="/settings">
+              <Settings className="mr-2 h-4 w-4" /> Paramètres
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
