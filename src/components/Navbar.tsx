@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Home, Info, Settings } from "lucide-react";
+import { Home, BookOpenText } from "lucide-react"; // Changed Info and Settings to BookOpenText
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -19,13 +19,8 @@ const Navbar: React.FC = () => {
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link to="/about">
-              <Info className="mr-2 h-4 w-4" /> À propos
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link to="/settings">
-              <Settings className="mr-2 h-4 w-4" /> Paramètres
+            <Link to="/documentation">
+              <BookOpenText className="mr-2 h-4 w-4" /> Documentation
             </Link>
           </Button>
         </div>
