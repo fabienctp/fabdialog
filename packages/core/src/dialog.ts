@@ -90,9 +90,25 @@ export class Dialog {
 
     const onMouseMove = (e: MouseEvent) => {
       if (!this.isDragging) return;
-      element.style.left = `${e.clientX - this.offsetX}px`;
-      element.style.top = `${e.clientY - this.offsetY}px`;
-      element.style.transform = "none";
+
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const dialogRect = element.getBoundingClientRect();
+
+      let newLeft = e.clientX - this.offsetX;
+      let newTop = e.clientY - this.offsetY;
+
+      // Constrain left position
+      newLeft = Math.max(0, newLeft); // Cannot go beyond left edge
+      newLeft = Math.min(newLeft, viewportWidth - dialogRect.width); // Cannot go beyond right edge
+
+      // Constrain top position
+      newTop = Math.max(0, newTop); // Cannot go beyond top edge
+      newTop = Math.min(newTop, viewportHeight - dialogRect.height); // Cannot go beyond bottom edge
+
+      element.style.left = `${newLeft}px`;
+      element.style.top = `${newTop}px`;
+      element.style.transform = "none"; // Ensure transform is reset if it was used for initial positioning
     };
 
     const onMouseUp = () => {
