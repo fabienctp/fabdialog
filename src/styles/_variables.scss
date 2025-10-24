@@ -3,7 +3,7 @@
   // Couleurs
   --fab-dialog-background: hsl(var(--background));
   --fab-dialog-border: hsl(var(--border));
-  --fab-dialog-primary: hsl(var(--muted)); // Changé pour utiliser la couleur muted
+  --fab-dialog-primary: hsl(var(--muted-darker-20)); // Utilise la nouvelle variable plus foncée
   --fab-dialog-muted: hsl(var(--muted));
   --fab-dialog-muted-foreground: hsl(var(--muted-foreground));
   --fab-dialog-destructive: hsl(var(--destructive));
