@@ -312,9 +312,9 @@ export class Dialog {
   public close() {
     if (this.dialogElement && document.body.contains(this.dialogElement)) {
       document.body.removeChild(this.dialogElement);
-      this.dialogElement = null;
-      dialogManager.unregisterDialog(this.id);
-      this.options.onClose?.(this.id);
     }
+    this.dialogElement = null; // Ensure dialogElement is nullified
+    dialogManager.unregisterDialog(this.id);
+    this.options.onClose?.(this.id);
   }
 }
