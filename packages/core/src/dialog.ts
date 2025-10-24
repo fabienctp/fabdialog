@@ -28,11 +28,12 @@ export class Dialog {
     const dialog = document.createElement("div");
     dialog.id = this.id; // Assign ID to the DOM element
     dialog.className = "fab-dialog"; // Use 'fab-' prefix
+    // Initial positioning with transform for centering, will be converted to pixels in render()
     dialog.style.top = "50%";
     dialog.style.left = "50%";
     dialog.style.transform = "translate(-50%, -50%)";
-    dialog.style.width = "auto";
-    dialog.style.height = "auto";
+    dialog.style.width = "auto"; // Let browser determine initial auto width
+    dialog.style.height = "auto"; // Let browser determine initial auto height
     dialog.style.zIndex = "1000"; // Initial z-index, will be updated by manager
 
     // Add mousedown listener to the dialog itself to bring it to front
@@ -108,7 +109,7 @@ export class Dialog {
 
       element.style.left = `${newLeft}px`;
       element.style.top = `${newTop}px`;
-      element.style.transform = "none"; // Ensure transform is reset if it was used for initial positioning
+      // transform is already removed in render()
     };
 
     const onMouseUp = () => {
@@ -160,6 +161,24 @@ export class Dialog {
     this.dialogElement = this.createDialogElement();
     document.body.appendChild(this.dialogElement);
     dialogManager.registerDialog(this); // Register with the manager
+
+    // After appending to body, calculate and set explicit dimensions and position
+    if (this.dialogElement) {
+      const rect = this.dialogElement.getBoundingClientRect();
+      const initialWidth = Math.max(rect.width, 50); // Respect min-width
+      const initialHeight = Math.max(rect.height, 160); // Respect min-height
+
+      this.dialogElement.style.width = `${initialWidth}px`;
+      this.dialogElement.style.height = `${initialHeight}px`;
+
+      // Calculate initial centered position in pixels
+      const initialLeft = (window.innerWidth - initialWidth) / 2;
+      const initialTop = (window.innerHeight - initialHeight) / 2;
+
+      this.dialogElement.style.left = `${initialLeft}px`;
+      this.dialogElement.style.top = `${initialTop}px`;
+      this.dialogElement.style.transform = "none"; // Remove the translate transform
+    }
   }
 
   public close() {
