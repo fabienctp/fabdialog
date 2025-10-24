@@ -130,8 +130,11 @@ export class DialogManager {
       this.restoreDialog(dialogId); // Restore before expanding
     }
 
-    const expandButton = dialog.dialogElement.querySelector('.fab-dialog-expand-button');
-    if (!expandButton) return;
+    const expandButton = dialog.expandButtonElement; // Utilise la référence directe
+    if (!expandButton) {
+      console.error(`DialogManager: Expand button element not found for dialog ${dialogId} during expand operation.`);
+      return;
+    }
 
     dialog._previousPosition = {
       left: dialog.dialogElement.style.left,
@@ -155,8 +158,11 @@ export class DialogManager {
     const dialog = this.activeDialogs.get(dialogId);
     if (!dialog || !dialog.dialogElement || !dialog.isExpanded) return;
 
-    const expandButton = dialog.dialogElement.querySelector('.fab-dialog-expand-button');
-    if (!expandButton) return;
+    const expandButton = dialog.expandButtonElement; // Utilise la référence directe
+    if (!expandButton) {
+      console.error(`DialogManager: Expand button element not found for dialog ${dialogId} during contract operation.`);
+      return;
+    }
 
     if (dialog._previousPosition) {
       dialog.dialogElement.style.left = dialog._previousPosition.left;

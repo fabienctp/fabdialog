@@ -15,6 +15,11 @@ export class Dialog {
   public isExpanded: boolean = false;
   public _previousPosition: { left: string; top: string; width: string; height: string; } | null = null;
 
+  // Références aux éléments des boutons de contrôle
+  public minimizeButtonElement: HTMLElement | null = null;
+  public expandButtonElement: HTMLElement | null = null;
+  public closeButtonElement: HTMLElement | null = null;
+
   private isDragging = false;
   private isResizing = false;
   private offsetX = 0;
@@ -79,34 +84,34 @@ export class Dialog {
     controls.className = "fab-dialog-controls";
 
     // Minimize Button
-    const minimizeButton = document.createElement("button");
-    minimizeButton.className = "fab-dialog-control-button fab-dialog-minimize-button";
-    minimizeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg>`;
-    minimizeButton.onclick = (e) => {
+    this.minimizeButtonElement = document.createElement("button");
+    this.minimizeButtonElement.className = "fab-dialog-control-button fab-dialog-minimize-button";
+    this.minimizeButtonElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg>`;
+    this.minimizeButtonElement.onclick = (e) => {
       e.stopPropagation();
       this.minimize();
     };
-    controls.appendChild(minimizeButton);
+    controls.appendChild(this.minimizeButtonElement);
 
     // Expand/Restore Button
-    const expandButton = document.createElement("button");
-    expandButton.className = "fab-dialog-control-button fab-dialog-expand-button";
-    expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 0 0 0-2 2v3m18 0V5a2 0 0 0-2-2h-3m0 18h3a2 0 0 0 2-2v-3m-18 0v3a2 0 0 0 2 2h3"/></svg>`;
-    expandButton.onclick = (e) => {
+    this.expandButtonElement = document.createElement("button");
+    this.expandButtonElement.className = "fab-dialog-control-button fab-dialog-expand-button";
+    this.expandButtonElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 0 0 0-2 2v3m18 0V5a2 0 0 0-2-2h-3m0 18h3a2 0 0 0 2-2v-3m-18 0v3a2 0 0 0 2 2h3"/></svg>`;
+    this.expandButtonElement.onclick = (e) => {
       e.stopPropagation();
       this.toggleExpand();
     };
-    controls.appendChild(expandButton);
+    controls.appendChild(this.expandButtonElement);
 
     // Close Button
-    const closeButton = document.createElement("button");
-    closeButton.className = "fab-dialog-control-button fab-dialog-close-button";
-    closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
-    closeButton.onclick = (e) => {
+    this.closeButtonElement = document.createElement("button");
+    this.closeButtonElement.className = "fab-dialog-control-button fab-dialog-close-button";
+    this.closeButtonElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
+    this.closeButtonElement.onclick = (e) => {
       e.stopPropagation();
       this.close();
     };
-    controls.appendChild(closeButton);
+    controls.appendChild(this.closeButtonElement);
 
     header.appendChild(controls);
 
