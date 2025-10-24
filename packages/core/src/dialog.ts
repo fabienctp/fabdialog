@@ -85,6 +85,7 @@ export class Dialog {
       this.offsetX = e.clientX - element.getBoundingClientRect().left;
       this.offsetY = e.clientY - element.getBoundingClientRect().top;
       element.style.cursor = "grabbing";
+      document.body.classList.add('no-select'); // Disable text selection
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
       dialogManager.bringToFront(this.id); // Bring to front when dragging starts
@@ -117,6 +118,7 @@ export class Dialog {
     const onMouseUp = () => {
       this.isDragging = false;
       element.style.cursor = "grab";
+      document.body.classList.remove('no-select'); // Re-enable text selection
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
@@ -135,6 +137,7 @@ export class Dialog {
       this.initialMouseX = e.clientX;
       this.initialMouseY = e.clientY;
       element.style.transition = "none";
+      document.body.classList.add('no-select'); // Disable text selection
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
       dialogManager.bringToFront(this.id); // Bring to front when resizing starts
@@ -154,6 +157,7 @@ export class Dialog {
     const onMouseUp = () => {
       this.isResizing = false;
       element.style.transition = "";
+      document.body.classList.remove('no-select'); // Re-enable text selection
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
