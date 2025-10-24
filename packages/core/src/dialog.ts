@@ -62,7 +62,15 @@ export class Dialog {
     }
 
     const resizeHandle = document.createElement("div");
-    resizeHandle.className = "dyad-dialog-resize-handle absolute bottom-0 right-0 w-4 h-4 bg-primary cursor-nwse-resize rounded-br-lg";
+    // Increased size (w-6 h-6) and added flexbox for centering the icon
+    resizeHandle.className = "dyad-dialog-resize-handle absolute bottom-0 right-0 w-6 h-6 bg-primary cursor-nwse-resize rounded-br-lg flex items-center justify-center text-primary-foreground";
+    // Added a simple SVG icon for visual indication
+    resizeHandle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="8 12 12 16 16 12"/>
+        <path d="M12 16V2a4 4 0 0 1 4-4h4"/>
+      </svg>
+    `;
 
     dialog.appendChild(header);
     dialog.appendChild(contentWrapper);
