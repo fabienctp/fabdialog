@@ -59,6 +59,16 @@ export class VanillaDialogTabs {
 
     const { scrollWidth, clientWidth, scrollLeft } = this.tabsScrollWrapper;
 
+    // Debugging logs
+    console.log(`[VanillaDialogTabs] checkScrollButtonsVisibility:
+      scrollWidth: ${scrollWidth}px
+      clientWidth: ${clientWidth}px
+      scrollLeft: ${scrollLeft}px
+      Overflowing: ${scrollWidth > clientWidth}
+      Can scroll left: ${scrollLeft > 0}
+      Can scroll right: ${scrollLeft < scrollWidth - clientWidth - 1}
+    `);
+
     // Show left button if not at the very beginning
     if (scrollLeft > 0) {
       this.scrollLeftButton.classList.remove("hidden");
@@ -67,7 +77,8 @@ export class VanillaDialogTabs {
     }
 
     // Show right button if there's more content to the right
-    if (scrollWidth > clientWidth && scrollLeft < scrollWidth - clientWidth) {
+    // Added a small tolerance (-1) for floating point precision
+    if (scrollWidth > clientWidth && scrollLeft < scrollWidth - clientWidth - 1) {
       this.scrollRightButton.classList.remove("hidden");
     } else {
       this.scrollRightButton.classList.add("hidden");
@@ -129,6 +140,7 @@ export class VanillaDialogTabs {
 
       this.tabsListElement?.appendChild(tabElement);
     });
-    this.checkScrollButtonsVisibility(); // Check visibility after tabs are updated
+    // Add a small delay to ensure layout is calculated after DOM updates
+    setTimeout(() => this.checkScrollButtonsVisibility(), 0);
   }
 }
