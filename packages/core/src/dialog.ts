@@ -3,13 +3,13 @@ import { dialogManager } from "./dialogManager"; // Import the dialog manager
 export interface DialogOptions {
   title: string;
   content: string | HTMLElement;
-  onClose?: () => void;
+  onClose?: (dialogId: string) => void; // Modifié pour passer dialogId
 }
 
 export class Dialog {
   public readonly id: string; // Make id public and readonly
   public dialogElement: HTMLElement | null = null; // Make dialogElement public for manager access
-  private options: DialogOptions;
+  public options: DialogOptions; // Rendu public pour l'accès au titre
   private isDragging = false;
   private isResizing = false;
   private offsetX = 0;
@@ -194,7 +194,7 @@ export class Dialog {
       document.body.removeChild(this.dialogElement);
       this.dialogElement = null;
       dialogManager.unregisterDialog(this.id); // Unregister from the manager
-      this.options.onClose?.();
+      this.options.onClose?.(this.id); // Passe l'ID de la boîte de dialogue au callback onClose
     }
   }
 }
