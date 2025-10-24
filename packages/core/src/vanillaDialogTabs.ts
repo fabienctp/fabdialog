@@ -1,9 +1,10 @@
 import { DialogManager } from "./dialogManager";
 import { Dialog } from "./dialog";
 
-const MINUS_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg>`;
 const CHEVRON_LEFT_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>`;
-const CHEVRON_RIGHT_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>`;
+const CHEVRON_RIGHT_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucude-chevron-right"><path d="m9 18 6-6-6-6"/></svg>`;
+const MINUS_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg>`;
+
 
 export class VanillaDialogTabs {
   private containerElement: HTMLElement;
@@ -12,15 +13,24 @@ export class VanillaDialogTabs {
   private tabsScrollWrapper: HTMLElement | null = null;
   private scrollLeftButton: HTMLElement | null = null;
   private scrollRightButton: HTMLElement | null = null;
+  private position: 'top' | 'bottom' | 'left' | 'right';
 
-  constructor(containerElement: HTMLElement, dialogManager: DialogManager) {
-    this.containerElement = containerElement;
+  constructor(dialogManager: DialogManager, options?: { containerElement?: HTMLElement; position?: 'top' | 'bottom' | 'left' | 'right' }) {
     this.dialogManager = dialogManager;
+    this.position = options?.position || 'bottom';
+
+    if (!options?.containerElement) {
+      this.containerElement = document.createElement("div");
+      this.containerElement.id = "fab-dialog-tabs-default-container";
+      document.body.appendChild(this.containerElement);
+    } else {
+      this.containerElement = options.containerElement;
+    }
     this.renderBaseStructure();
   }
 
   private renderBaseStructure() {
-    this.containerElement.className = "fab-dialog-tabs-container";
+    this.containerElement.className = `fab-dialog-tabs-container fab-dialog-tabs-container--${this.position}`;
     this.containerElement.innerHTML = `
       <button class="fab-dialog-scroll-button fab-dialog-scroll-button--left hidden">
           ${CHEVRON_LEFT_ICON_SVG}
@@ -42,33 +52,56 @@ export class VanillaDialogTabs {
 
     this.tabsScrollWrapper?.addEventListener("scroll", () => this.checkScrollButtonsVisibility());
     window.addEventListener("resize", () => this.checkScrollButtonsVisibility());
+    this.checkScrollButtonsVisibility(); // Initial check
   }
 
   private scrollTabs(direction: 'left' | 'right') {
     if (!this.tabsScrollWrapper) return;
-    const scrollAmount = 200; // Adjust as needed
-    if (direction === 'left') {
-      this.tabsScrollWrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    const scrollAmount = 200;
+
+    if (this.position === 'left' || this.position === 'right') {
+      // Vertical scrolling
+      if (direction === 'left') { // 'left' button now means 'up'
+        this.tabsScrollWrapper.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+      } else { // 'right' button now means 'down'
+        this.tabsScrollWrapper.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+      }
     } else {
-      this.tabsScrollWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      // Horizontal scrolling (top/bottom)
+      if (direction === 'left') {
+        this.tabsScrollWrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        this.tabsScrollWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
     }
   }
 
   private checkScrollButtonsVisibility() {
     if (!this.tabsScrollWrapper || !this.scrollLeftButton || !this.scrollRightButton) return;
 
-    const { scrollWidth, clientWidth, scrollLeft } = this.tabsScrollWrapper;
+    let scrollDimension: number;
+    let clientDimension: number;
+    let scrollOffset: number;
 
-    // Show left button if not at the very beginning
-    if (scrollLeft > 0) {
+    if (this.position === 'left' || this.position === 'right') {
+      scrollDimension = this.tabsScrollWrapper.scrollHeight;
+      clientDimension = this.tabsScrollWrapper.clientHeight;
+      scrollOffset = this.tabsScrollWrapper.scrollTop;
+    } else {
+      scrollDimension = this.tabsScrollWrapper.scrollWidth;
+      clientDimension = this.tabsScrollWrapper.clientWidth;
+      scrollOffset = this.tabsScrollWrapper.scrollLeft;
+    }
+
+    // Show left/up button if not at the very beginning
+    if (scrollOffset > 0) {
       this.scrollLeftButton.classList.remove("hidden");
     } else {
       this.scrollLeftButton.classList.add("hidden");
     }
 
-    // Show right button if there's more content to the right
-    // Added a small tolerance (-1) for floating point precision
-    if (scrollWidth > clientWidth && scrollLeft < scrollWidth - clientWidth - 1) {
+    // Show right/down button if there's more content
+    if (scrollDimension > clientDimension && scrollOffset < scrollDimension - clientDimension - 1) {
       this.scrollRightButton.classList.remove("hidden");
     } else {
       this.scrollRightButton.classList.add("hidden");

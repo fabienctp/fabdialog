@@ -35,6 +35,7 @@
   --fab-dialog-tabs-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
   --fab-dialog-tabs-z-index: 10000;
   --fab-dialog-tabs-gap: 0.5rem;
+  --fab-dialog-tabs-sidebar-width: 200px; // Default width for left/right tabs
 
   --fab-dialog-tab-background: hsl(var(--muted));
   --fab-dialog-tab-foreground: hsl(var(--muted-foreground));

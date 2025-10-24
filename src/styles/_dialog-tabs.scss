@@ -3,41 +3,109 @@
 /* Styles for the custom vanilla dialog tabs */
 .fab-dialog-tabs-container {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: var(--fab-dialog-tabs-background);
-  border-top: 1px solid var(--fab-dialog-tabs-border);
   padding: var(--fab-dialog-tabs-padding);
   box-shadow: var(--fab-dialog-tabs-shadow);
   z-index: var(--fab-dialog-tabs-z-index);
-  display: flex; /* Make it a flex container */
-  align-items: center; /* Vertically align items */
-  gap: var(--fab-dialog-tabs-gap); /* Gap between buttons and scroll wrapper */
-  overflow: hidden; /* Hide overflow from buttons */
-}
-
-.fab-dialog-tabs-scroll-wrapper {
-  flex-grow: 1; /* Take up available space */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent tabs from wrapping */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  
-  /* Hide scrollbar for Webkit browsers */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for Firefox */
-  scrollbar-width: none;
-  text-align: left; /* Aligne le contenu inline-flex à gauche */
-}
-
-.fab-dialog-tabs-list {
-  display: inline-flex; /* Use inline-flex to keep items on one line within scroll wrapper */
+  display: flex;
   gap: var(--fab-dialog-tabs-gap);
-  padding-right: var(--fab-dialog-tabs-gap); /* Add some padding to the right for the last tab */
+  overflow: hidden;
+  transition: all 0.2s ease-in-out; // Smooth transitions for position changes
 }
 
+.fab-dialog-tabs-container--bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--fab-dialog-tabs-border);
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.fab-dialog-tabs-container--top {
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid var(--fab-dialog-tabs-border);
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.fab-dialog-tabs-container--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--fab-dialog-tabs-sidebar-width);
+  border-right: 1px solid var(--fab-dialog-tabs-border);
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.fab-dialog-tabs-container--right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: var(--fab-dialog-tabs-sidebar-width);
+  border-left: 1px solid var(--fab-dialog-tabs-border);
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+// Common scroll wrapper styles
+.fab-dialog-tabs-scroll-wrapper {
+  flex-grow: 1;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+}
+
+// Horizontal scroll wrapper (top/bottom)
+.fab-dialog-tabs-container--top .fab-dialog-tabs-scroll-wrapper,
+.fab-dialog-tabs-container--bottom .fab-dialog-tabs-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-align: left;
+}
+
+// Vertical scroll wrapper (left/right)
+.fab-dialog-tabs-container--left .fab-dialog-tabs-scroll-wrapper,
+.fab-dialog-tabs-container--right .fab-dialog-tabs-scroll-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  width: 100%;
+}
+
+// Common tabs list styles
+.fab-dialog-tabs-list {
+  gap: var(--fab-dialog-tabs-gap);
+}
+
+// Horizontal tabs list (top/bottom)
+.fab-dialog-tabs-container--top .fab-dialog-tabs-list,
+.fab-dialog-tabs-container--bottom .fab-dialog-tabs-list {
+  display: inline-flex;
+  padding-right: var(--fab-dialog-tabs-gap);
+}
+
+// Vertical tabs list (left/right)
+.fab-dialog-tabs-container--left .fab-dialog-tabs-list,
+.fab-dialog-tabs-container--right .fab-dialog-tabs-list {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--fab-dialog-tabs-gap);
+  padding-right: 0;
+  width: 100%;
+}
+
+// Common tab styles
 .fab-dialog-tab {
   display: flex;
   align-items: center;
@@ -50,76 +118,17 @@
   background-color: var(--fab-dialog-tab-background);
   color: var(--fab-dialog-tab-foreground);
   border: 1px solid transparent;
-  flex-shrink: 0; /* Prevent tabs from shrinking */
-
-  &:hover {
-    background-color: var(--fab-dialog-tab-hover-background);
-    color: var(--fab-dialog-tab-hover-foreground);
-  }
-
-  &--selected {
-    background-color: var(--fab-dialog-tab-selected-background);
-    color: var(--fab-dialog-tab-selected-foreground);
-    border-color: var(--fab-dialog-tab-selected-border);
-
-    &:hover {
-      background-color: var(--fab-dialog-tab-selected-hover-background);
-      color: var(--fab-dialog-tab-selected-foreground);
-    }
-  }
-
-  &--minimized {
-    opacity: 0.7;
-    font-style: italic;
-    background-color: var(--fab-dialog-tab-background);
-    color: var(--fab-dialog-tab-foreground);
-    border-color: transparent;
-    
-    &:hover {
-      background-color: var(--fab-dialog-tab-hover-background);
-      color: var(--fab-dialog-tab-hover-foreground);
-    }
-  }
+  flex-shrink: 0;
 }
 
-.fab-dialog-tab-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: var(--fab-dialog-tab-title-max-width);
+// Vertical tab specific styles
+.fab-dialog-tabs-container--left .fab-dialog-tab,
+.fab-dialog-tabs-container--right .fab-dialog-tab {
+  width: calc(100% - (var(--fab-dialog-tabs-padding) * 2)); // Adjust width to fit sidebar with padding
+  justify-content: flex-start;
 }
 
-.fab-dialog-tab-close-button {
-  padding: var(--fab-dialog-tab-close-button-padding);
-  border-radius: var(--fab-dialog-tab-close-button-radius);
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-  background-color: transparent;
-  border: none;
-  color: var(--fab-dialog-tab-close-button-foreground);
-
-  &:hover {
-    background-color: var(--fab-dialog-tab-close-button-hover-background);
-    color: var(--fab-dialog-tab-close-button-hover-foreground);
-  }
-
-  svg {
-    width: var(--fab-dialog-tab-close-button-icon-size);
-    height: var(--fab-dialog-tab-close-button-icon-size);
-  }
-}
-
-.fab-dialog-tab-status-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--fab-dialog-tab-close-button-icon-size);
-  height: var(--fab-dialog-tab-close-button-icon-size);
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
+// Scroll buttons
 .fab-dialog-scroll-button {
   display: flex;
   align-items: center;
@@ -131,7 +140,7 @@
   border-radius: var(--fab-dialog-tab-radius);
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-  flex-shrink: 0; /* Prevent buttons from shrinking */
+  flex-shrink: 0;
 
   &:hover {
     background-color: var(--fab-dialog-accent);
@@ -146,4 +155,10 @@
     width: 1.25rem;
     height: 1.25rem;
   }
+}
+
+// Rotate icons for vertical scroll buttons
+.fab-dialog-tabs-container--left .fab-dialog-scroll-button svg,
+.fab-dialog-tabs-container--right .fab-dialog-scroll-button svg {
+  transform: rotate(90deg);
 }
