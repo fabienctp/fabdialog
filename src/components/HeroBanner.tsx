@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const HeroBanner: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-r from-primary to-primary-lighter-20 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8 text-center rounded-lg shadow-xl mb-12">
+    <div className="relative w-full bg-gradient-to-r from-primary to-primary-lighter-20 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8 text-center rounded-lg shadow-xl mb-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl mb-4">
           Construisez des expériences dynamiques

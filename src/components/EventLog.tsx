@@ -58,7 +58,7 @@ const EventLog: React.FC = () => {
         <CardTitle className="text-lg">Journal des événements de dialogue</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow p-0">
-        <ScrollArea className="h-full px-6 pb-6">
+        <ScrollArea className="h-full px-6 pb-6 overflow-auto">
           {events.length === 0 ? (
             <p className="text-sm text-muted-foreground">Aucun événement de dialogue récent.</p>
           ) : (
