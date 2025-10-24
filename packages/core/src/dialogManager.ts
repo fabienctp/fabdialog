@@ -16,21 +16,45 @@ export class DialogManager {
   createDialog(options: DialogOptions): Dialog {
     const newDialog = new Dialog(options);
     newDialog.render();
-    this.registerDialog(newDialog);
     return newDialog;
   }
 
   registerDialog(dialog: Dialog) {
     this.activeDialogs.set(dialog.id, dialog);
     this.bringToFront(dialog.id);
-    this.updateVanillaTabs();
   }
 
-  // New method to request a dialog to close itself
+  onDialogStateChange(dialogId: string) {
+    const dialog = this.activeDialogs.get(dialogId);
+    if (dialog && !dialog.isMinimized) {
+      this.bringToFront(dialogId);
+    } else {
+      this.updateVanillaTabs();
+    }
+  }
+
+  toggleDialogMinimize(dialogId: string) {
+    const dialog = this.activeDialogs.get(dialogId);
+    if (dialog) {
+      if (dialog.isMinimized) {
+        dialog.restore();
+      } else {
+        dialog.minimize();
+      }
+    }
+  }
+
+  toggleDialogExpand(dialogId: string) {
+    const dialog = this.activeDialogs.get(dialogId);
+    if (dialog) {
+      dialog.toggleExpand();
+    }
+  }
+
   closeDialog(dialogId: string) {
     const dialogToClose = this.activeDialogs.get(dialogId);
     if (dialogToClose) {
-      dialogToClose.close(); // The Dialog instance handles its own DOM removal
+      dialogToClose.close();
     }
   }
 
@@ -38,9 +62,19 @@ export class DialogManager {
     this.activeDialogs.delete(dialogId);
 
     if (this._focusedDialogId === dialogId) {
-      if (this.activeDialogs.size > 0) {
-        const firstDialogId = this.activeDialogs.keys().next().value!;
-        this.bringToFront(firstDialogId);
+      let newFocusedId: string | null = null;
+      for (const [id, dialog] of this.activeDialogs.entries()) {
+        if (!dialog.isMinimized) {
+          newFocusedId = id;
+          break;
+        }
+      }
+      if (!newFocusedId && this.activeDialogs.size > 0) {
+        newFocusedId = this.activeDialogs.keys().next().value!;
+      }
+
+      if (newFocusedId) {
+        this.bringToFront(newFocusedId);
       } else {
         this._focusedDialogId = null;
         this._focusChangeListener?.(null);
@@ -52,7 +86,7 @@ export class DialogManager {
   private getHighestZIndex(): number {
     let maxZ = 0;
     this.activeDialogs.forEach(dialog => {
-      if (dialog.dialogElement) {
+      if (dialog.dialogElement && !dialog.isMinimized) {
         const zIndex = parseInt(dialog.dialogElement.style.zIndex || '0', 10);
         if (zIndex > maxZ) {
           maxZ = zIndex;
@@ -64,7 +98,14 @@ export class DialogManager {
 
   bringToFront(dialogId: string) {
     const dialogToFocus = this.activeDialogs.get(dialogId);
-    if (dialogToFocus && dialogToFocus.dialogElement) {
+    if (!dialogToFocus) return;
+
+    if (dialogToFocus.isMinimized) {
+      dialogToFocus.restore();
+      return;
+    }
+
+    if (dialogToFocus.dialogElement) {
       const currentDialogZIndex = parseInt(dialogToFocus.dialogElement.style.zIndex || '0', 10);
       const highestZIndex = this.getHighestZIndex();
 
@@ -87,7 +128,7 @@ export class DialogManager {
     }
   }
 
-  private updateVanillaTabs() {
+  updateVanillaTabs() {
     if (this._vanillaDialogTabs) {
       this._vanillaDialogTabs.updateTabs(Array.from(this.activeDialogs.values()), this._focusedDialogId);
     }

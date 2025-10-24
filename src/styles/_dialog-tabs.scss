@@ -34,7 +34,7 @@
   cursor: pointer;
   background-color: var(--fab-dialog-tab-background);
   color: var(--fab-dialog-tab-foreground);
-  border: 1px solid transparent; // Add a transparent border for consistency
+  border: 1px solid transparent;
 
   &:hover {
     background-color: var(--fab-dialog-tab-hover-background);
@@ -47,8 +47,21 @@
     border-color: var(--fab-dialog-tab-selected-border);
 
     &:hover {
-      background-color: var(--fab-dialog-tab-selected-hover-background); /* Apply the lighter hover background */
-      color: var(--fab-dialog-tab-selected-foreground); /* Keep the text color the same as selected */
+      background-color: var(--fab-dialog-tab-selected-hover-background);
+      color: var(--fab-dialog-tab-selected-foreground);
+    }
+  }
+
+  &--minimized {
+    opacity: 0.7;
+    font-style: italic;
+    background-color: var(--fab-dialog-tab-background);
+    color: var(--fab-dialog-tab-foreground);
+    border-color: transparent;
+    
+    &:hover {
+      background-color: var(--fab-dialog-tab-hover-background);
+      color: var(--fab-dialog-tab-hover-foreground);
     }
   }
 }
@@ -76,5 +89,17 @@
   svg {
     width: var(--fab-dialog-tab-close-button-icon-size);
     height: var(--fab-dialog-tab-close-button-icon-size);
+  }
+}
+
+.fab-dialog-tab-status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fab-dialog-tab-close-button-icon-size);
+  height: var(--fab-dialog-tab-close-button-icon-size);
+  svg {
+    width: 100%;
+    height: 100%;
   }
 }

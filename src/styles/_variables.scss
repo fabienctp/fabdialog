@@ -3,12 +3,14 @@
   // Couleurs
   --fab-dialog-background: hsl(var(--background));
   --fab-dialog-border: hsl(var(--border));
-  --fab-dialog-primary: hsl(var(--muted-darker-20)); // Utilise la nouvelle variable plus foncée
+  --fab-dialog-primary: hsl(var(--muted-darker-20));
   --fab-dialog-muted: hsl(var(--muted));
   --fab-dialog-muted-foreground: hsl(var(--muted-foreground));
   --fab-dialog-destructive: hsl(var(--destructive));
   --fab-dialog-destructive-foreground: hsl(var(--destructive-foreground));
   --fab-dialog-foreground: hsl(var(--foreground));
+  --fab-dialog-accent: hsl(var(--accent));
+  --fab-dialog-accent-foreground: hsl(var(--accent-foreground));
 
   // Rayon de bordure
   --fab-dialog-radius: var(--radius);
@@ -20,8 +22,8 @@
   --fab-dialog-content-padding: 1rem;
   --fab-dialog-title-font-size: 1.125rem;
   --fab-dialog-title-font-weight: 600;
-  --fab-dialog-close-button-padding: 0.25rem;
-  --fab-dialog-close-button-icon-size: 1.25rem;
+  --fab-dialog-control-button-padding: 0.25rem;
+  --fab-dialog-control-button-icon-size: 1.25rem;
   --fab-dialog-resize-handle-size: 24px;
   --fab-dialog-resize-handle-line-color: hsl(var(--muted-foreground));
   --fab-dialog-resize-handle-line-opacity: 0.6;
@@ -41,17 +43,17 @@
   --fab-dialog-tab-selected-background: hsl(var(--primary));
   --fab-dialog-tab-selected-foreground: hsl(var(--primary-foreground));
   --fab-dialog-tab-selected-border: hsl(var(--primary));
-  --fab-dialog-tab-selected-hover-background: hsl(var(--primary-lighter-20)); /* New variable for selected tab hover */
-  --fab-dialog-tab-padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
-  --fab-dialog-tab-font-size: 0.875rem; /* text-sm */
-  --fab-dialog-tab-radius: 0.375rem; /* rounded-md */
-  --fab-dialog-tab-gap: 0.5rem; /* gap-2 */
+  --fab-dialog-tab-selected-hover-background: hsl(var(--primary-lighter-20));
+  --fab-dialog-tab-padding: 0.375rem 0.75rem;
+  --fab-dialog-tab-font-size: 0.875rem;
+  --fab-dialog-tab-radius: 0.375rem;
+  --fab-dialog-tab-gap: 0.5rem;
   --fab-dialog-tab-title-max-width: 150px;
 
-  --fab-dialog-tab-close-button-padding: 0.125rem; /* p-0.5 */
-  --fab-dialog-tab-close-button-radius: 0.125rem; /* rounded-sm */
+  --fab-dialog-tab-close-button-padding: 0.125rem;
+  --fab-dialog-tab-close-button-radius: 0.125rem;
   --fab-dialog-tab-close-button-foreground: hsl(var(--muted-foreground));
   --fab-dialog-tab-close-button-hover-background: hsl(var(--destructive));
   --fab-dialog-tab-close-button-hover-foreground: hsl(var(--destructive-foreground));
-  --fab-dialog-tab-close-button-icon-size: 0.75rem; /* h-3 w-3 */
+  --fab-dialog-tab-close-button-icon-size: 0.75rem;
 }

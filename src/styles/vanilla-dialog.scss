@@ -1,4 +1,4 @@
-@import "./variables"; // Importation du fichier de variables
+@import "./variables";
 
 /* Styles for the custom vanilla dialog */
 .fab-dialog { /* Updated prefix */
@@ -14,15 +14,21 @@
   flex-direction: column;
   resize: none;
   overflow: hidden;
-  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Ajout de la transition */
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out, top 0.2s ease-in-out, left 0.2s ease-in-out;
 }
 
 .fab-dialog--focused {
-  // Effet de focus plus léger : bordure de 2px et ombre subtile
-  box-shadow: 0 0 0 2px var(--fab-dialog-primary), // Anneau de focus plus fin
-              0 6px 10px -2px rgba(0, 0, 0, 0.1), // Ombre légèrement plus prononcée pour le focus
+  box-shadow: 0 0 0 2px var(--fab-dialog-primary),
+              0 6px 10px -2px rgba(0, 0, 0, 0.1),
               0 2px 4px -1px rgba(0, 0, 0, 0.05);
-  border-color: var(--fab-dialog-primary); // Couleur de bordure assortie à l'anneau de focus
+  border-color: var(--fab-dialog-primary);
+}
+
+.fab-dialog--expanded {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  transition: none;
 }
 
 .fab-dialog-header { /* Updated prefix */
@@ -34,28 +40,51 @@
   cursor: grab;
   background-color: var(--fab-dialog-muted);
   color: var(--fab-dialog-muted-foreground);
-  border-top-left-radius: calc(var(--fab-dialog-radius) - 2px); /* rounded-t-lg */
-  border-top-right-radius: calc(var(--fab-dialog-radius) - 2px); /* rounded-t-lg */
+  border-top-left-radius: calc(var(--fab-dialog-radius) - 2px);
+  border-top-right-radius: calc(var(--fab-dialog-radius) - 2px);
+}
+
+.fab-dialog--expanded .fab-dialog-header {
+  border-radius: 0;
 }
 
 .fab-dialog-title { /* Updated prefix */
   font-size: var(--fab-dialog-title-font-size);
   font-weight: var(--fab-dialog-title-font-weight);
+  flex-grow: 1;
+}
+
+.fab-dialog-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.fab-dialog-control-button {
+  padding: var(--fab-dialog-control-button-padding);
+  border-radius: 0.375rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+  border: none;
+  color: var(--fab-dialog-muted-foreground);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--fab-dialog-accent);
+    color: var(--fab-dialog-accent-foreground);
+  }
+
+  svg {
+    width: var(--fab-dialog-control-button-icon-size);
+    height: var(--fab-dialog-control-button-icon-size);
+  }
 }
 
 .fab-dialog-close-button { /* Updated prefix */
-  padding: var(--fab-dialog-close-button-padding);
-  border-radius: 0.375rem; /* rounded-md */
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; /* transition-colors */
-  transition-duration: 150ms; /* transition-colors */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* transition-colors */
   &:hover {
     background-color: var(--fab-dialog-destructive);
     color: var(--fab-dialog-destructive-foreground);
-  }
-  svg {
-    width: var(--fab-dialog-close-button-icon-size);
-    height: var(--fab-dialog-close-button-icon-size);
   }
 }
 
@@ -73,8 +102,8 @@
   width: var(--fab-dialog-resize-handle-size);
   height: var(--fab-dialog-resize-handle-size);
   cursor: nwse-resize;
-  overflow: hidden; /* To contain the pseudo-elements */
-  border-bottom-right-radius: calc(var(--fab-dialog-radius) - 2px); /* rounded-br-lg */
+  overflow: hidden;
+  border-bottom-right-radius: calc(var(--fab-dialog-radius) - 2px);
 
   &::before,
   &::after {
@@ -82,7 +111,7 @@
     position: absolute;
     background-color: var(--fab-dialog-resize-handle-line-color);
     opacity: var(--fab-dialog-resize-handle-line-opacity);
-    height: 1px; /* Thin line */
+    height: 1px;
   }
 
   /* First line (bottom-most) */
@@ -102,4 +131,8 @@
     transform: rotate(-45deg);
     transform-origin: bottom right;
   }
+}
+
+.fab-dialog--expanded .fab-dialog-resize-handle {
+  display: none;
 }
