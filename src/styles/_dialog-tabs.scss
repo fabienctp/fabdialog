@@ -48,6 +48,7 @@
 
     &:hover {
       background-color: var(--fab-dialog-tab-selected-hover-background); /* Apply the lighter hover background */
+      color: var(--fab-dialog-tab-selected-foreground); /* Keep the text color the same as selected */
     }
   }
 }
