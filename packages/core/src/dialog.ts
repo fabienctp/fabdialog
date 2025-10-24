@@ -63,6 +63,7 @@ export class Dialog {
   private setupDrag(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
       if (this.isResizing) return; // Prevent dragging while resizing
+      e.stopPropagation(); // Prevent event from bubbling up or down to other elements
       this.isDragging = true;
       this.offsetX = e.clientX - element.getBoundingClientRect().left;
       this.offsetY = e.clientY - element.getBoundingClientRect().top;
@@ -80,7 +81,7 @@ export class Dialog {
 
     const onMouseUp = () => {
       this.isDragging = false;
-      element.style.cursor = "grab";
+      element.style.cursor = "grab"; // Revert cursor
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
@@ -91,6 +92,7 @@ export class Dialog {
   private setupResize(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
       if (this.isDragging) return; // Prevent resizing while dragging
+      e.stopPropagation(); // Prevent event from bubbling up or down to other elements
       this.isResizing = true;
       this.initialWidth = element.offsetWidth;
       this.initialHeight = element.offsetHeight;
