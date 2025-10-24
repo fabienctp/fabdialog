@@ -84,7 +84,7 @@ export class Dialog {
       this.isDragging = true;
       this.offsetX = e.clientX - element.getBoundingClientRect().left;
       this.offsetY = e.clientY - element.getBoundingClientRect().top;
-      element.style.cursor = "grabbing";
+      handle.style.cursor = "grabbing"; // Apply cursor to handle
       document.body.classList.add('no-select'); // Disable text selection
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
@@ -117,7 +117,7 @@ export class Dialog {
 
     const onMouseUp = () => {
       this.isDragging = false;
-      element.style.cursor = "grab";
+      handle.style.cursor = "grab"; // Apply cursor to handle
       document.body.classList.remove('no-select'); // Re-enable text selection
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
