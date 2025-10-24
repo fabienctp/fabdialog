@@ -27,7 +27,8 @@ export class Dialog {
   private createDialogElement(): HTMLElement {
     const dialog = document.createElement("div");
     dialog.id = this.id; // Assign ID to the DOM element
-    dialog.className = "dyad-dialog fixed bg-background border border-border rounded-lg shadow-lg z-50 min-w-80 min-h-40 flex flex-col resize-none overflow-hidden";
+    // Replaced Tailwind classes with a single semantic class and reduced min-width
+    dialog.className = "dyad-dialog";
     dialog.style.top = "50%";
     dialog.style.left = "50%";
     dialog.style.transform = "translate(-50%, -50%)";
@@ -44,17 +45,17 @@ export class Dialog {
     });
 
     const header = document.createElement("div");
-    header.className = "dyad-dialog-header flex items-center justify-between p-3 border-b border-border cursor-grab bg-muted text-muted-foreground rounded-t-lg";
-    header.innerHTML = `<h3 class="text-lg font-semibold">${this.options.title}</h3>`;
+    header.className = "dyad-dialog-header"; // Replaced Tailwind classes
+    header.innerHTML = `<h3 class="dyad-dialog-title">${this.options.title}</h3>`;
 
     const closeButton = document.createElement("button");
-    closeButton.className = "dyad-dialog-close-button p-1 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors";
+    closeButton.className = "dyad-dialog-close-button"; // Replaced Tailwind classes
     closeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
     closeButton.onclick = () => this.close();
     header.appendChild(closeButton);
 
     const contentWrapper = document.createElement("div");
-    contentWrapper.className = "dyad-dialog-content p-4 flex-grow overflow-auto text-foreground";
+    contentWrapper.className = "dyad-dialog-content"; // Replaced Tailwind classes
     if (typeof this.options.content === "string") {
       contentWrapper.innerHTML = this.options.content;
     } else {
@@ -62,9 +63,8 @@ export class Dialog {
     }
 
     const resizeHandle = document.createElement("div");
-    // Removed bg-primary, flex, items-center, justify-center, text-primary-foreground, and innerHTML (SVG icon)
-    resizeHandle.className = "dyad-dialog-resize-handle absolute bottom-0 right-0 w-6 h-6 cursor-nwse-resize rounded-br-lg";
-    // No innerHTML for the icon
+    resizeHandle.className = "dyad-dialog-resize-handle"; // Replaced Tailwind classes
+    // No innerHTML for the icon, as requested
 
     dialog.appendChild(header);
     dialog.appendChild(contentWrapper);
@@ -126,7 +126,8 @@ export class Dialog {
       const dx = e.clientX - this.initialMouseX;
       const dy = e.clientY - this.initialMouseY;
 
-      element.style.width = `${Math.max(this.initialWidth + dx, 320)}px`;
+      // Reduced min-width to 256px (equivalent to Tailwind's min-w-64)
+      element.style.width = `${Math.max(this.initialWidth + dx, 256)}px`;
       element.style.height = `${Math.max(this.initialHeight + dy, 160)}px`;
     };
 
@@ -141,7 +142,6 @@ export class Dialog {
   }
 
   public render() {
-    // No longer closing existing dialogs, allowing multiple instances
     this.dialogElement = this.createDialogElement();
     document.body.appendChild(this.dialogElement);
     dialogManager.registerDialog(this); // Register with the manager
