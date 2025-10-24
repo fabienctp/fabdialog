@@ -110,6 +110,7 @@ export class Dialog {
       this.offsetY = e.clientY - element.getBoundingClientRect().top;
       handle.style.cursor = "grabbing";
       document.body.classList.add('no-select');
+      element.style.transition = "none"; // Disable transition during drag
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
       dialogManager.bringToFront(this.id);
@@ -140,6 +141,7 @@ export class Dialog {
       this.isDragging = false;
       handle.style.cursor = "grab";
       document.body.classList.remove('no-select');
+      element.style.transition = ""; // Re-enable transition after drag
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
