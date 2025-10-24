@@ -6,6 +6,14 @@ import Footer from "@/components/Footer";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const Documentation: React.FC = () => {
   return (
@@ -210,16 +218,20 @@ const Documentation: React.FC = () => {
               <Separator className="my-6" />
 
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Propriétés</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `focusedDialogId: string | null`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Un accesseur (`getter`) qui renvoie l'ID de la boîte de dialogue actuellement focalisée, ou `null` s'il n'y en a pas.
-                  </p>
-                </div>
-              </div>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[200px]">Propriété</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">`focusedDialogId: string | null`</TableCell>
+                    <TableCell>Un accesseur (`getter`) qui renvoie l'ID de la boîte de dialogue actuellement focalisée, ou `null` s'il n'y en a pas.</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
 
               <Separator className="my-6" />
 
@@ -233,15 +245,44 @@ const Documentation: React.FC = () => {
                   window.addEventListener("dialog:opened", (event) => console.log(event.detail));
                 </code>
               </pre>
-              <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
-                <li><Badge variant="secondary" className="mr-2">dialog:opened</Badge> : Une boîte de dialogue a été ouverte.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:closed</Badge> : Une boîte de dialogue a été fermée.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:minimized</Badge> : Une boîte de dialogue a été minimisée.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:restored</Badge> : Une boîte de dialogue a été restaurée.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:expanded</Badge> : Une boîte de dialogue a été agrandie.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:contracted</Badge> : Une boîte de dialogue a été contractée.</li>
-                <li><Badge variant="secondary" className="mr-2">dialog:focused</Badge> : Une boîte de dialogue a reçu le focus.</li>
-              </ul>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[200px]">Événement</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:opened</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été ouverte.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:closed</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été fermée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:minimized</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été minimisée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:restored</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été restaurée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:expanded</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été agrandie.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:contracted</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a été contractée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium"><Badge variant="secondary">dialog:focused</Badge></TableCell>
+                    <TableCell>Une boîte de dialogue a reçu le focus.</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </CardContent>
           </Card>
         </section>
@@ -278,40 +319,32 @@ const Documentation: React.FC = () => {
               <Separator className="my-6" />
 
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Propriétés</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `id: string`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    L'identifiant unique de la boîte de dialogue.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `options: DialogOptions`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Les options utilisées pour créer la boîte de dialogue.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `isMinimized: boolean`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Indique si la boîte de dialogue est actuellement minimisée.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    `isExpanded: boolean`
-                  </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Indique si la boîte de dialogue est actuellement agrandie.
-                  </p>
-                </div>
-              </div>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[200px]">Propriété</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">`id: string`</TableCell>
+                    <TableCell>L'identifiant unique de la boîte de dialogue.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`options: DialogOptions`</TableCell>
+                    <TableCell>Les options utilisées pour créer la boîte de dialogue.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`isMinimized: boolean`</TableCell>
+                    <TableCell>Indique si la boîte de dialogue est actuellement minimisée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`isExpanded: boolean`</TableCell>
+                    <TableCell>Indique si la boîte de dialogue est actuellement agrandie.</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
 
               <Separator className="my-6" />
 
