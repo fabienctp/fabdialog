@@ -45,6 +45,10 @@
     background-color: var(--fab-dialog-tab-selected-background);
     color: var(--fab-dialog-tab-selected-foreground);
     border-color: var(--fab-dialog-tab-selected-border);
+
+    &:hover {
+      background-color: var(--fab-dialog-tab-selected-hover-background); /* Apply the lighter hover background */
+    }
   }
 }
 
