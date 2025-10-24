@@ -4,6 +4,7 @@ export interface DialogOptions {
   title: string;
   content: string | HTMLElement;
   onClose?: (dialogId: string) => void;
+  size?: 'small' | 'medium' | 'large' | 'full'; // Nouvelle option de taille
 }
 
 export class Dialog {
@@ -12,7 +13,7 @@ export class Dialog {
   public options: DialogOptions;
   public isMinimized: boolean = false;
   public isExpanded: boolean = false;
-  public _previousPosition: { left: string; top: string; width: string; height: string; } | null = null; // Made public for manager access
+  public _previousPosition: { left: string; top: string; width: string; height: string; } | null = null;
 
   private isDragging = false;
   private isResizing = false;
@@ -24,8 +25,38 @@ export class Dialog {
   private initialMouseY = 0;
 
   constructor(options: DialogOptions) {
-    this.options = options;
+    this.options = { ...options, size: options.size || 'medium' }; // 'medium' par défaut
     this.id = `fab-dialog-${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  private _calculateInitialDimensions(size: DialogOptions['size']): { width: string; height: string } {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    let width: number;
+    let height: number;
+
+    switch (size) {
+      case 'small':
+        width = Math.max(viewportWidth * 0.3, 300); // 30% de la largeur, min 300px
+        height = Math.max(viewportHeight * 0.4, 200); // 40% de la hauteur, min 200px
+        break;
+      case 'large':
+        width = Math.max(viewportWidth * 0.7, 600); // 70% de la largeur, min 600px
+        height = Math.max(viewportHeight * 0.8, 400); // 80% de la hauteur, min 400px
+        break;
+      case 'full':
+        width = Math.max(viewportWidth * 0.9, 800); // 90% de la largeur, min 800px
+        height = Math.max(viewportHeight * 0.9, 500); // 90% de la hauteur, min 500px
+        break;
+      case 'medium':
+      default:
+        width = Math.max(viewportWidth * 0.5, 400); // 50% de la largeur, min 400px
+        height = Math.max(viewportHeight * 0.6, 300); // 60% de la hauteur, min 300px
+        break;
+    }
+
+    return { width: `${width}px`, height: `${height}px` };
   }
 
   private createDialogElement(): HTMLElement {
@@ -60,7 +91,7 @@ export class Dialog {
     // Expand/Restore Button
     const expandButton = document.createElement("button");
     expandButton.className = "fab-dialog-control-button fab-dialog-expand-button";
-    expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3m-18 0v3a2 2 0 0 0 2 2h3"/></svg>`;
+    expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M8 3H5a2 0 0 0-2 2v3m18 0V5a2 0 0 0-2-2h-3m0 18h3a2 0 0 0 2-2v-3m-18 0v3a2 0 0 0 2 2h3"/></svg>`;
     expandButton.onclick = (e) => {
       e.stopPropagation();
       this.toggleExpand();
@@ -172,8 +203,8 @@ export class Dialog {
       const dx = e.clientX - this.initialMouseX;
       const dy = e.clientY - this.initialMouseY;
 
-      element.style.width = `${Math.max(this.initialWidth + dx, 50)}px`;
-      element.style.height = `${Math.max(this.initialHeight + dy, 160)}px`;
+      element.style.width = `${Math.max(this.initialWidth + dx, 300)}px`; // Minimum width
+      element.style.height = `${Math.max(this.initialHeight + dy, 200)}px`; // Minimum height
     };
 
     const onMouseUp = () => {
@@ -193,15 +224,12 @@ export class Dialog {
     dialogManager.registerDialog(this);
 
     if (this.dialogElement) {
-      const rect = this.dialogElement.getBoundingClientRect();
-      const initialWidth = Math.max(rect.width, 50);
-      const initialHeight = Math.max(rect.height, 160);
+      const { width, height } = this._calculateInitialDimensions(this.options.size);
+      this.dialogElement.style.width = width;
+      this.dialogElement.style.height = height;
 
-      this.dialogElement.style.width = `${initialWidth}px`;
-      this.dialogElement.style.height = `${initialHeight}px`;
-
-      const initialLeft = (window.innerWidth - initialWidth) / 2;
-      const initialTop = (window.innerHeight - initialHeight) / 2;
+      const initialLeft = (window.innerWidth - this.dialogElement.offsetWidth) / 2;
+      const initialTop = (window.innerHeight - this.dialogElement.offsetHeight) / 2;
 
       this.dialogElement.style.left = `${initialLeft}px`;
       this.dialogElement.style.top = `${initialTop}px`;

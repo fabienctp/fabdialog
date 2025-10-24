@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { dialogManager } from "@my-app/core/src/dialogManager"; // Ensure correct import path
+import { dialogManager } from "@my-app/core/src/dialogManager";
+import { DialogOptions } from "@my-app/core/src/dialog"; // Import DialogOptions
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; // Import shadcn Select components
 
 interface VanillaDialogWrapperProps {
   title: string;
@@ -11,24 +13,38 @@ interface VanillaDialogWrapperProps {
 
 const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, content }) => {
   const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const [dialogSize, setDialogSize] = useState<DialogOptions['size']>('medium'); // État pour la taille de la boîte de dialogue
 
   useEffect(() => {
     if (tabsContainerRef.current) {
       dialogManager.initVanillaTabs(tabsContainerRef.current);
     }
-    // No need to add/remove event listeners here anymore, EventLog handles it.
   }, []);
 
   const openNewDialog = () => {
     dialogManager.createDialog({
       title: `${title} #${dialogManager.activeDialogs.size + 1}`,
       content: `${content} Ceci est la boîte de dialogue numéro ${dialogManager.activeDialogs.size + 1}.`,
+      size: dialogSize, // Utilise la taille sélectionnée
     });
   };
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <Button onClick={openNewDialog}>Ouvrir une nouvelle boîte de dialogue Vanilla</Button>
+      <div className="flex items-center space-x-4">
+        <Select value={dialogSize} onValueChange={(value: DialogOptions['size']) => setDialogSize(value)}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Taille de la boîte de dialogue" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="small">Petite</SelectItem>
+            <SelectItem value="medium">Moyenne</SelectItem>
+            <SelectItem value="large">Grande</SelectItem>
+            <SelectItem value="full">Pleine</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button onClick={openNewDialog}>Ouvrir une nouvelle boîte de dialogue Vanilla</Button>
+      </div>
       <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
         Les boîtes de dialogue sont maintenant gérées par la bibliothèque principale, y compris les onglets ci-dessous.
       </p>

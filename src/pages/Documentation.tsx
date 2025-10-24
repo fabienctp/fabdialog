@@ -229,7 +229,7 @@ const Documentation: React.FC = () => {
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Événements</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Le `DialogManager` émet des événements personnalisés sur l'objet `window` pour les changements d'état des boîtes de dialogue.
-                Vous pouvez les écouter comme suit :
+                Vous pouvez les écouter comme follows :
               </p>
               <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
                 <code>
@@ -298,6 +298,7 @@ const Documentation: React.FC = () => {
                   &nbsp;&nbsp;title: string;<br />
                   &nbsp;&nbsp;content: string | HTMLElement;<br />
                   &nbsp;&nbsp;onClose?: (dialogId: string) => void;<br />
+                  &nbsp;&nbsp;size?: 'small' | 'medium' | 'large' | 'full'; // Nouvelle propriété<br />
                   &#125;
                 </code>
               </pre>
@@ -305,6 +306,7 @@ const Documentation: React.FC = () => {
                 <li>`title`: Le titre affiché dans l'en-tête de la boîte de dialogue.</li>
                 <li>`content`: Le contenu de la boîte de dialogue, peut être une chaîne HTML ou un élément DOM.</li>
                 <li>`onClose` (optionnel): Une fonction de rappel appelée lorsque la boîte de dialogue est fermée.</li>
+                <li>`size` (optionnel): La taille initiale de la boîte de dialogue. Peut être `'small'`, `'medium'` (par défaut), `'large'` ou `'full'`.</li>
               </ul>
 
               <Separator className="my-6" />
