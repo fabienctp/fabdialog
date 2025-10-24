@@ -22,11 +22,11 @@ export class Dialog {
 
   private createDialogElement(): HTMLElement {
     const dialog = document.createElement("div");
-    dialog.className = "dyad-dialog fixed bg-background border border-border rounded-lg shadow-lg z-50 min-w-80 min-h-40 flex flex-col resize-none overflow-hidden"; // Added resize-none and overflow-hidden
+    dialog.className = "dyad-dialog fixed bg-background border border-border rounded-lg shadow-lg z-50 min-w-80 min-h-40 flex flex-col resize-none overflow-hidden";
     dialog.style.top = "50%";
     dialog.style.left = "50%";
     dialog.style.transform = "translate(-50%, -50%)";
-    dialog.style.width = "auto"; // Start with auto width/height
+    dialog.style.width = "auto";
     dialog.style.height = "auto";
 
     const header = document.createElement("div");
@@ -48,11 +48,11 @@ export class Dialog {
     }
 
     const resizeHandle = document.createElement("div");
-    resizeHandle.className = "dyad-dialog-resize-handle absolute bottom-0 right-0 w-4 h-4 bg-primary cursor-nwse-resize rounded-br-lg"; // Styling for the handle
+    resizeHandle.className = "dyad-dialog-resize-handle absolute bottom-0 right-0 w-4 h-4 bg-primary cursor-nwse-resize rounded-br-lg";
 
     dialog.appendChild(header);
     dialog.appendChild(contentWrapper);
-    dialog.appendChild(resizeHandle); // Add the resize handle
+    dialog.appendChild(resizeHandle);
 
     this.setupDrag(header, dialog);
     this.setupResize(resizeHandle, dialog);
@@ -75,7 +75,7 @@ export class Dialog {
       if (!this.isDragging) return;
       element.style.left = `${e.clientX - this.offsetX}px`;
       element.style.top = `${e.clientY - this.offsetY}px`;
-      element.style.transform = "none"; // Remove initial transform for positioning
+      element.style.transform = "none";
     };
 
     const onMouseUp = () => {
@@ -90,12 +90,13 @@ export class Dialog {
 
   private setupResize(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
+      if (this.isDragging) return; // Prevent resizing while dragging
       this.isResizing = true;
       this.initialWidth = element.offsetWidth;
       this.initialHeight = element.offsetHeight;
       this.initialMouseX = e.clientX;
       this.initialMouseY = e.clientY;
-      element.style.transition = "none"; // Disable transitions during resize
+      element.style.transition = "none";
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     };
@@ -105,13 +106,13 @@ export class Dialog {
       const dx = e.clientX - this.initialMouseX;
       const dy = e.clientY - this.initialMouseY;
 
-      element.style.width = `${Math.max(this.initialWidth + dx, 320)}px`; // Min width 320px (min-w-80)
-      element.style.height = `${Math.max(this.initialHeight + dy, 160)}px`; // Min height 160px (min-h-40)
+      element.style.width = `${Math.max(this.initialWidth + dx, 320)}px`;
+      element.style.height = `${Math.max(this.initialHeight + dy, 160)}px`;
     };
 
     const onMouseUp = () => {
       this.isResizing = false;
-      element.style.transition = ""; // Re-enable transitions
+      element.style.transition = "";
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
@@ -121,7 +122,7 @@ export class Dialog {
 
   public render() {
     if (this.dialogElement) {
-      this.close(); // Ensure only one instance is rendered
+      this.close();
     }
     this.dialogElement = this.createDialogElement();
     document.body.appendChild(this.dialogElement);
