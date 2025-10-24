@@ -28,21 +28,6 @@ const Documentation: React.FC = () => {
                 Elle est conçue pour être intégrée facilement dans n'importe quelle application web.
               </p>
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Installation (dans ce projet)</h3>
-              <p className="mb-4 text-gray-700 dark:text-gray-300">
-                La bibliothèque est configurée comme un package local (`fab-dialog`) dans votre projet.
-                Assurez-vous que les dépendances sont installées et que le package est construit :
-              </p>
-              <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
-                <code>
-                  cd packages/core<br />
-                  npm install<br />
-                  npm run build<br />
-                  cd ../..<br />
-                  npm install
-                </code>
-              </pre>
-
               <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Installation (dans un projet externe)</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Si le package `fab-dialog` est publié sur npm, vous pouvez l'installer dans n'importe quel projet externe avec :
