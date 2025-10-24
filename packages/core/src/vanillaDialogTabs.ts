@@ -1,4 +1,4 @@
-import { DialogManager } from "./dialogManager";
+import { DialogManager } from "./dialogManager"; // Corrected import to get the class type
 import { Dialog } from "./dialog"; // Import Dialog to get its structure
 
 interface VanillaDialogTab {

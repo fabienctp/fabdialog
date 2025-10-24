@@ -1,7 +1,7 @@
 import { Dialog } from "./dialog";
 import { VanillaDialogTabs } from "./vanillaDialogTabs"; // Import the new vanilla tabs class
 
-class DialogManager {
+export class DialogManager { // Added 'export' keyword here
   private activeDialogs: Map<string, Dialog> = new Map();
   private currentMaxZIndex: number = 1000; // Starting z-index for dialogs
   private _focusChangeListener: ((dialogId: string | null) => void) | null = null; // Listener for focus changes
@@ -27,7 +27,7 @@ class DialogManager {
     if (this._focusedDialogId === dialogId) {
       // If there are still active dialogs, focus the first one available
       if (this.activeDialogs.size > 0) {
-        const firstDialogId = this.activeDialogs.keys().next().value;
+        const firstDialogId: string = this.activeDialogs.keys().next().value; // Type assertion added
         this.bringToFront(firstDialogId); // This will update _focusedDialogId and notify listeners
       } else {
         // No dialogs left, clear the focused dialog ID and notify listeners
