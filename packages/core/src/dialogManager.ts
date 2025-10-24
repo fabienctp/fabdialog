@@ -27,7 +27,7 @@ export class DialogManager { // Added 'export' keyword here
     if (this._focusedDialogId === dialogId) {
       // If there are still active dialogs, focus the first one available
       if (this.activeDialogs.size > 0) {
-        const firstDialogId: string = this.activeDialogs.keys().next().value; // Type assertion added
+        const firstDialogId = this.activeDialogs.keys().next().value!; // Added non-null assertion here
         this.bringToFront(firstDialogId); // This will update _focusedDialogId and notify listeners
       } else {
         // No dialogs left, clear the focused dialog ID and notify listeners
