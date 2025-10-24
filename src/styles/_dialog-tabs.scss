@@ -119,6 +119,24 @@
   color: var(--fab-dialog-tab-foreground);
   border: 1px solid transparent;
   flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--fab-dialog-tab-hover-background);
+    color: var(--fab-dialog-tab-hover-foreground);
+  }
+}
+
+/* Style for the selected (focused) dialog tab */
+.fab-dialog-tab--selected {
+  background-color: var(--fab-dialog-tab-selected-background);
+  color: var(--fab-dialog-tab-selected-foreground);
+  border-color: var(--fab-dialog-tab-selected-border);
+  font-weight: 600; /* Make text bolder */
+
+  &:hover {
+    background-color: var(--fab-dialog-tab-selected-hover-background);
+    color: var(--fab-dialog-tab-selected-foreground); /* Keep foreground color consistent on hover */
+  }
 }
 
 // Vertical tab specific styles
