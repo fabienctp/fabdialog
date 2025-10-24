@@ -59,16 +59,6 @@ export class VanillaDialogTabs {
 
     const { scrollWidth, clientWidth, scrollLeft } = this.tabsScrollWrapper;
 
-    // Debugging logs
-    console.log(`[VanillaDialogTabs] checkScrollButtonsVisibility:
-      scrollWidth: ${scrollWidth}px
-      clientWidth: ${clientWidth}px
-      scrollLeft: ${scrollLeft}px
-      Overflowing: ${scrollWidth > clientWidth}
-      Can scroll left: ${scrollLeft > 0}
-      Can scroll right: ${scrollLeft < scrollWidth - clientWidth - 1}
-    `);
-
     // Show left button if not at the very beginning
     if (scrollLeft > 0) {
       this.scrollLeftButton.classList.remove("hidden");
