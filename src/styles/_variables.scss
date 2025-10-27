@@ -1,13 +1,13 @@
 // Define SASS variables for HSL components of core colors, mirroring globals.scss
 // These are used for SASS calculations, not directly for CSS custom properties.
 
-// Light theme HSL components for primary
-$light-primary-h: 222.2; $light-primary-s: 47.4%; $light-primary-l: 11.2%;
-$light-primary-color: hsl($light-primary-h, $light-primary-s, $light-primary-l);
+// Light theme RGB components for primary
+$light-primary-r: 15; $light-primary-g: 25; $light-primary-b: 40;
+$light-primary-color: rgb($light-primary-r, $light-primary-g, $light-primary-b);
 
-// Dark theme HSL components for primary
-$dark-primary-h: 210; $dark-primary-s: 40%; $dark-primary-l: 98%;
-$dark-primary-color: hsl($dark-primary-h, $dark-primary-s, $dark-primary-l);
+// Dark theme RGB components for primary
+$dark-primary-r: 245; $dark-primary-g: 248; $dark-primary-b: 250;
+$dark-primary-color: rgb($dark-primary-r, $dark-primary-g, $dark-primary-b);
 
 // Variables pour les styles des boîtes de dialogue FAB
 :root {
