@@ -8,7 +8,7 @@ export interface DialogOptions {
 }
 
 const MAXIMIZE_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-icon lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>`;
-const MINIMIZE_ICON_SVG_FOR_EXPAND = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize-icon lucide-minimize"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>`;
+const MINIMIZE_ICON_SVG_FOR_EXPAND = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize"><path d="M8 3v3a2 0 0 1-2 2H3m18 0h-3a2 0 0 1-2-2V3m0 18v-3a2 0 0 1 2-2h3m-18 0h3a2 0 0 1 2 2v3"/></svg>`;
 
 
 export class Dialog {
@@ -38,7 +38,7 @@ export class Dialog {
     this.id = `fab-dialog-${Math.random().toString(36).substr(2, 9)}`;
   }
 
-  private _calculateInitialDimensions(size: DialogOptions['size']): { width: string; height: string } {
+  private _calculateDimensions(size: DialogOptions['size']): { width: number; height: number } {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
@@ -65,7 +65,7 @@ export class Dialog {
         break;
     }
 
-    return { width: `${width}px`, height: `${height}px` };
+    return { width, height };
   }
 
   private createDialogElement(): HTMLElement {
@@ -142,7 +142,7 @@ export class Dialog {
 
   private setupDrag(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
-      if (this.isResizing || this.isExpanded) return;
+      if (this.isResizing || this.isExpanded) return; // Disable drag if expanded
       e.preventDefault();
       e.stopPropagation();
       this.isDragging = true;
@@ -191,7 +191,7 @@ export class Dialog {
 
   private setupResize(handle: HTMLElement, element: HTMLElement) {
     const onMouseDown = (e: MouseEvent) => {
-      if (this.isDragging || this.isExpanded) return;
+      if (this.isDragging || this.isExpanded) return; // Disable resize if expanded
       e.preventDefault();
       e.stopPropagation();
       this.isResizing = true;
@@ -233,23 +233,42 @@ export class Dialog {
     dialogManager.registerDialog(this);
 
     if (this.dialogElement) {
-      const { width, height } = this._calculateInitialDimensions(this.options.size);
-      this.dialogElement.style.width = width;
-      this.dialogElement.style.height = height;
+      const { width, height } = this._calculateDimensions(this.options.size);
+      this.dialogElement.style.width = `${width}px`;
+      this.dialogElement.style.height = `${height}px`;
 
-      const initialLeft = (window.innerWidth - this.dialogElement.offsetWidth) / 2;
-      const initialTop = (window.innerHeight - this.dialogElement.offsetHeight) / 2;
+      let initialLeft = (window.innerWidth - width) / 2;
+      let initialTop = (window.innerHeight - height) / 2;
 
       this.dialogElement.style.left = `${initialLeft}px`;
       this.dialogElement.style.top = `${initialTop}px`;
       this.dialogElement.style.transform = "none";
 
-      this._previousPosition = {
-        left: this.dialogElement.style.left,
-        top: this.dialogElement.style.top,
-        width: this.dialogElement.style.width,
-        height: this.dialogElement.style.height,
-      };
+      if (this.options.size === 'full') {
+        this.isExpanded = true;
+        this.dialogElement.classList.add('fab-dialog--expanded');
+        this.setExpandIcon(true);
+        // Pour la taille 'full', _previousPosition doit être un état non agrandi par défaut
+        const { width: mediumWidth, height: mediumHeight } = this._calculateDimensions('medium');
+        const mediumLeft = (window.innerWidth - mediumWidth) / 2;
+        const mediumTop = (window.innerHeight - mediumHeight) / 2;
+        this._previousPosition = {
+          left: `${mediumLeft}px`,
+          top: `${mediumTop}px`,
+          width: `${mediumWidth}px`,
+          height: `${mediumHeight}px`,
+        };
+      } else {
+        this.isExpanded = false;
+        this.dialogElement.classList.remove('fab-dialog--expanded');
+        this.setExpandIcon(false);
+        this._previousPosition = {
+          left: this.dialogElement.style.left,
+          top: this.dialogElement.style.top,
+          width: this.dialogElement.style.width,
+          height: this.dialogElement.style.height,
+        };
+      }
     }
   }
 
