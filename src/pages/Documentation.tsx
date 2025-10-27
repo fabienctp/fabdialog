@@ -4,7 +4,6 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   Table,
@@ -14,18 +13,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import DialogEventBadge from "@/components/DialogEventBadge"; // Import du nouveau badge
 
 const Documentation: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
       <Navbar />
       <main className="flex-grow container mx-auto p-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">
+        <h1 className="text-4xl font-bold text-center mb-10 text-muted-darker-20">
           Documentation de la Bibliothèque de Boîtes de Dialogue Vanilla
         </h1>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+          <h2 className="text-3xl font-semibold mb-6 text-muted-darker-20">
             Démarrage Rapide
           </h2>
           <Card className="p-6">
@@ -36,7 +36,7 @@ const Documentation: React.FC = () => {
                 Elle est conçue pour être intégrée facilement dans n'importe quelle application web.
               </p>
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Installation (dans un projet externe)</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Installation (dans un projet externe)</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Si le package `fab-dialog` est publié sur npm, vous pouvez l'installer dans n'importe quel projet externe avec :
               </p>
@@ -46,7 +46,7 @@ const Documentation: React.FC = () => {
                 </code>
               </pre>
               
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Utilisation de base</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Utilisation de base</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Importez le `dialogManager` et la classe `Dialog` depuis le package `fab-dialog`.
                 Le `dialogManager` est une instance singleton qui gère toutes les boîtes de dialogue actives.
@@ -74,7 +74,7 @@ const Documentation: React.FC = () => {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+          <h2 className="text-3xl font-semibold mb-6 text-muted-darker-20">
             `DialogManager`
           </h2>
           <Card className="p-6">
@@ -86,7 +86,7 @@ const Documentation: React.FC = () => {
               </p>
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Méthodes</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Méthodes</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -208,7 +208,7 @@ const Documentation: React.FC = () => {
 
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Propriétés</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Propriétés</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -226,7 +226,7 @@ const Documentation: React.FC = () => {
 
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Événements</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Événements</h3>
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 Le `DialogManager` émet des événements personnalisés sur l'objet `window` pour les changements d'état des boîtes de dialogue.
                 Vous pouvez les écouter comme follows :
@@ -245,31 +245,31 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:opened</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:opened</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été ouverte.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:closed</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:closed</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été fermée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:minimized</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:minimized</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été minimisée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:restored</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:restored</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été restaurée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:expanded</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:expanded</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été agrandie.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:contracted</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:contracted</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a été contractée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><Badge variant="secondary">dialog:focused</Badge></TableCell>
+                    <TableCell className="font-medium"><DialogEventBadge>dialog:focused</DialogEventBadge></TableCell>
                     <TableCell>Une boîte de dialogue a reçu le focus.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -279,7 +279,7 @@ const Documentation: React.FC = () => {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+          <h2 className="text-3xl font-semibold mb-6 text-muted-darker-20">
             `Dialog`
           </h2>
           <Card className="p-6">
@@ -291,7 +291,7 @@ const Documentation: React.FC = () => {
               </p>
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Interface `DialogOptions`</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Interface `DialogOptions`</h3>
               <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
                 <code>
                   interface DialogOptions &#123;<br />
@@ -311,7 +311,7 @@ const Documentation: React.FC = () => {
 
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Propriétés</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Propriétés</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -341,7 +341,7 @@ const Documentation: React.FC = () => {
 
               <Separator className="my-6" />
 
-              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Méthodes</h3>
+              <h3 className="text-2xl font-medium mb-4 text-muted-darker-20">Méthodes</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
