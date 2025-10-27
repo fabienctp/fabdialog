@@ -15,7 +15,7 @@ $dark-primary-color: rgb($dark-primary-r, $dark-primary-g, $dark-primary-b);
   --fab-dialog-background: hsl(var(--fab-background));
   --fab-dialog-border: hsl(var(--fab-border));
   --fab-dialog-primary: hsl(var(--fab-primary)); // Directly use primary for dialog primary
-  --fab-dialog-muted: lighten(desaturate($light-primary-color, 20%), 80%); // Derived from primary for light mode
+  --fab-dialog-muted: lighten(desaturate(--fab-primary, 20%), 80%); // Derived from primary for light mode
   --fab-dialog-muted-foreground: hsl(var(--fab-muted-foreground));
   --fab-dialog-destructive: hsl(var(--fab-destructive));
   --fab-dialog-destructive-foreground: hsl(var(--fab-destructive-foreground));
