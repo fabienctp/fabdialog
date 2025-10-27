@@ -130,12 +130,6 @@ export class DialogManager {
       this.restoreDialog(dialogId); // Restore before expanding
     }
 
-    const expandButton = dialog.expandButtonElement; // Utilise la référence directe
-    if (!expandButton) {
-      console.error(`DialogManager: Expand button element not found for dialog ${dialogId} during expand operation.`);
-      return;
-    }
-
     dialog._previousPosition = {
       left: dialog.dialogElement.style.left,
       top: dialog.dialogElement.style.top,
@@ -148,7 +142,7 @@ export class DialogManager {
     dialog.dialogElement.style.height = '100vh';
     dialog.dialogElement.style.transform = 'none';
     dialog.dialogElement.classList.add('fab-dialog--expanded');
-    // expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize"><path d="M8 3v3a2 0 0 1-2 2H3m18 0h-3a2 0 0 1-2-2V3m0 18v-3a2 0 0 1 2-2h3m-18 0h3a2 0 0 1 2 2v3"/></svg>`; // Supprimé
+    dialog.setExpandIcon(true); // Set to minimize icon
     dialog.isExpanded = true;
     this.dispatchDialogEvent(DIALOG_EVENTS.EXPANDED, dialogId);
     this.updateVanillaTabs();
@@ -157,12 +151,6 @@ export class DialogManager {
   contractDialog(dialogId: string) {
     const dialog = this.activeDialogs.get(dialogId);
     if (!dialog || !dialog.dialogElement || !dialog.isExpanded) return;
-
-    const expandButton = dialog.expandButtonElement; // Utilise la référence directe
-    if (!expandButton) {
-      console.error(`DialogManager: Expand button element not found for dialog ${dialogId} during contract operation.`);
-      return;
-    }
 
     if (dialog._previousPosition) {
       dialog.dialogElement.style.left = dialog._previousPosition.left;
@@ -182,7 +170,7 @@ export class DialogManager {
       dialog.dialogElement.style.top = `${initialTop}px`;
     }
     dialog.dialogElement.classList.remove('fab-dialog--expanded');
-    // expandButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize-icon lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 0 0 0-2-2h-3"/><path d="M3 16v3a2 0 0 0 2 2h3"/><path d="M16 21h3a2 0 0 0 2-2v-3"/></svg>`; // Supprimé
+    dialog.setExpandIcon(false); // Set to maximize icon
     dialog.isExpanded = false;
     this.dispatchDialogEvent(DIALOG_EVENTS.CONTRACTED, dialogId);
     this.updateVanillaTabs();

@@ -59,7 +59,7 @@ const Documentation: React.FC = () => {
                   dialogManager.createDialog(&#123;<br />
                   &nbsp;&nbsp;title: "Ma nouvelle boîte de dialogue",<br />
                   &nbsp;&nbsp;content: "Ceci est le contenu de ma boîte de dialogue.",<br />
-                  &nbsp;&nbsp;onClose: (dialogId) => console.log(`Boîte de dialogue &#123;dialogId&#125; fermée`),<br />
+                  &nbsp;&nbsp;onClose: (dialogId) =&gt; console.log(&#96;Boîte de dialogue &#36;&#123;dialogId&#125; fermée&#96;),<br />
                   &#125;);<br />
                   <br />
                   // Pour initialiser les onglets de dialogue (nécessite un élément DOM)<br />
@@ -197,9 +197,9 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`onFocusChange(callback: (dialogId: string | null) => void)`</TableCell>
+                    <TableCell className="font-medium">`onFocusChange(callback: (dialogId: string | null) =&gt; void)`</TableCell>
                     <TableCell>
-                      `callback: (dialogId: string | null) => void` (Obligatoire)
+                      `callback: (dialogId: string | null) =&gt; void` (Obligatoire)
                     </TableCell>
                     <TableCell>Définit un rappel qui sera appelé lorsque la boîte de dialogue focalisée change.</TableCell>
                   </TableRow>
@@ -233,7 +233,7 @@ const Documentation: React.FC = () => {
               </p>
               <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
                 <code>
-                  window.addEventListener("dialog:opened", (event) => console.log(event.detail));
+                  window.addEventListener("dialog:opened", (event) =&gt; console.log(event.detail));
                 </code>
               </pre>
               <Table>
@@ -297,7 +297,7 @@ const Documentation: React.FC = () => {
                   interface DialogOptions &#123;<br />
                   &nbsp;&nbsp;title: string;<br />
                   &nbsp;&nbsp;content: string | HTMLElement;<br />
-                  &nbsp;&nbsp;onClose?: (dialogId: string) => void;<br />
+                  &nbsp;&nbsp;onClose?: (dialogId: string) =&gt; void;<br />
                   &nbsp;&nbsp;size?: 'small' | 'medium' | 'large' | 'full'; // Nouvelle propriété<br />
                   &#125;
                 </code>
