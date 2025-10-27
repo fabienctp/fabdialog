@@ -1,10 +1,21 @@
+// Define SASS variables for HSL components of core colors, mirroring globals.scss
+// These are used for SASS calculations, not directly for CSS custom properties.
+
+// Light theme HSL components for primary
+$light-primary-h: 222.2; $light-primary-s: 47.4%; $light-primary-l: 11.2%;
+$light-primary-color: hsl($light-primary-h, $light-primary-s, $light-primary-l);
+
+// Dark theme HSL components for primary
+$dark-primary-h: 210; $dark-primary-s: 40%; $dark-primary-l: 98%;
+$dark-primary-color: hsl($dark-primary-h, $dark-primary-s, $dark-primary-l);
+
 // Variables pour les styles des boîtes de dialogue FAB
 :root {
   // Couleurs
   --fab-dialog-background: hsl(var(--background));
   --fab-dialog-border: hsl(var(--border));
-  --fab-dialog-primary: hsl(var(--muted-darker-20));
-  --fab-dialog-muted: hsl(var(--muted));
+  --fab-dialog-primary: hsl(var(--primary)); // Directly use primary for dialog primary
+  --fab-dialog-muted: #{hsl(lighten(desaturate($light-primary-color, 20%), 80%))}; // Derived from primary for light mode
   --fab-dialog-muted-foreground: hsl(var(--muted-foreground));
   --fab-dialog-destructive: hsl(var(--destructive));
   --fab-dialog-destructive-foreground: hsl(var(--destructive-foreground));
@@ -31,20 +42,19 @@
   // Variables pour les onglets de dialogue vanilla
   --fab-dialog-tabs-background: hsl(var(--background));
   --fab-dialog-tabs-border: hsl(var(--border));
-  --fab-dialog-tabs-padding: 0.5rem;
   --fab-dialog-tabs-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
   --fab-dialog-tabs-z-index: 10000;
   --fab-dialog-tabs-gap: 0.5rem;
   --fab-dialog-tabs-sidebar-width: 200px; // Default width for left/right tabs
 
-  --fab-dialog-tab-background: hsl(var(--muted));
-  --fab-dialog-tab-foreground: hsl(var(--muted-foreground));
-  --fab-dialog-tab-hover-background: hsl(var(--accent));
-  --fab-dialog-tab-hover-foreground: hsl(var(--accent-foreground));
-  --fab-dialog-tab-selected-background: hsl(var(--primary));
+  --fab-dialog-tab-background: var(--fab-dialog-muted); // Use derived muted
+  --fab-dialog-tab-foreground: var(--fab-dialog-muted-foreground);
+  --fab-dialog-tab-hover-background: var(--fab-dialog-accent);
+  --fab-dialog-tab-hover-foreground: var(--fab-dialog-accent-foreground);
+  --fab-dialog-tab-selected-background: var(--fab-dialog-primary); // Use derived primary
   --fab-dialog-tab-selected-foreground: hsl(var(--primary-foreground));
-  --fab-dialog-tab-selected-border: hsl(var(--primary));
-  --fab-dialog-tab-selected-hover-background: hsl(var(--primary-lighter-20));
+  --fab-dialog-tab-selected-border: var(--fab-dialog-primary);
+  --fab-dialog-tab-selected-hover-background: #{hsl(lighten($light-primary-color, 10%))}; // Derived from primary for light mode
   --fab-dialog-tab-padding: 0.375rem 0.75rem;
   --fab-dialog-tab-font-size: 0.875rem;
   --fab-dialog-tab-radius: 0.375rem;
@@ -53,8 +63,13 @@
 
   --fab-dialog-tab-close-button-padding: 0.125rem;
   --fab-dialog-tab-close-button-radius: 0.125rem;
-  --fab-dialog-tab-close-button-foreground: hsl(var(--muted-foreground));
-  --fab-dialog-tab-close-button-hover-background: hsl(var(--destructive));
-  --fab-dialog-tab-close-button-hover-foreground: hsl(var(--destructive-foreground));
+  --fab-dialog-tab-close-button-foreground: var(--fab-dialog-muted-foreground);
+  --fab-dialog-tab-close-button-hover-background: var(--fab-dialog-destructive);
+  --fab-dialog-tab-close-button-hover-foreground: var(--fab-dialog-destructive-foreground);
   --fab-dialog-tab-close-button-icon-size: 0.75rem;
+}
+
+.dark {
+  --fab-dialog-muted: #{hsl(darken(saturate($dark-primary-color, 10%), 50%))}; // Derived from primary for dark mode
+  --fab-dialog-tab-selected-hover-background: #{hsl(darken($dark-primary-color, 10%))}; // Derived from primary for dark mode
 }
