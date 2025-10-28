@@ -3,16 +3,94 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-  * {
-    @apply border-[var(--fab-border)];
+  :root {
+    --fab-background: 0 0% 100%;
+    --fab-foreground: 222.2 84% 4.9%;
+
+    --fab-card: 0 0% 100%;
+    --fab-card-foreground: 222.2 84% 4.9%;
+
+    --fab-popover: 0 0% 100%;
+    --fab-popover-foreground: 222.2 84% 4.9%;
+
+    --fab-primary: 222.2 47.4% 11.2%;
+    --fab-primary-foreground: 210 40% 98%;
+    --fab-primary-lighter-20: 222.2 47.4% 28.96%; /* 20% lighter than primary */
+
+    --fab-secondary: 210 40% 96.1%;
+    --fab-secondary-foreground: 222.2 47.4% 11.2%;
+
+    --fab-muted: 210 40% 96.1%;
+    --fab-muted-foreground: 215.4 16.3% 46.9%;
+    --fab-muted-darker-20: 210 40% 76.88%; /* 20% darker than muted */
+
+    --fab-accent: 210 40% 96.1%;
+    --fab-accent-foreground: 222.2 47.4% 11.2%;
+
+    --fab-destructive: 0 84.2% 60.2%;
+    --fab-destructive-foreground: 210 40% 98%;
+
+    --fab-border: 214.3 31.8% 91.4%;
+    --fab-input: 214.3 31.8% 91.4%;
+    --fab-ring: 222.2 84% 4.9%;
+
+    --fab-radius: 0.5rem;
+
+    --fab-sidebar-background: 0 0% 98%;
+
+    --fab-sidebar-foreground: 240 5.3% 26.1%;
+
+    --fab-sidebar-primary: 240 5.9% 10%;
+
+    --fab-sidebar-primary-foreground: 0 0% 98%;
+
+    --fab-sidebar-accent: 240 4.8% 95.9%;
+
+    --fab-sidebar-accent-foreground: 240 5.9% 10%;
+
+    --fab-sidebar-border: 220 13% 91%;
+
+    --fab-sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  body {
-    @apply bg-[var(--fab-background)] text-[var(--fab-foreground)];
+  .dark {
+    --fab-background: 222.2 84% 4.9%;
+    --fab-foreground: 210 40% 98%;
+
+    --fab-card: 222.2 84% 4.9%;
+    --fab-card-foreground: 210 40% 98%;
+
+    --fab-popover: 222.2 84% 4.9%;
+    --fab-popover-foreground: 210 40% 98%;
+
+    --fab-primary: 210 40% 98%;
+    --fab-primary-foreground: 222.2 47.4% 11.2%;
+    --fab-primary-lighter-20: 210 40% 98.4%; /* 20% lighter than primary */
+
+    --fab-secondary: 217.2 32.6% 17.5%;
+    --fab-secondary-foreground: 210 40% 98%;
+
+    --fab-muted: 217.2 32.6% 17.5%;
+    --fab-muted-foreground: 215 20.2% 65.1%;
+    --fab-muted-darker-20: 217.2 32.6% 14%; /* 20% darker than muted */
+
+    --fab-accent: 217.2 32.6% 17.5%;
+    --fab-accent-foreground: 210 40% 98%;
+
+    --fab-destructive: 0 62.8% 30.6%;
+    --fab-destructive-foreground: 210 40% 98%;
+
+    --fab-border: 217.2 32.6% 17.5%;
+    --fab-input: 217.2 32.6% 17.5%;
+    --fab-ring: 212.7 26.8% 83.9%;
+    --fab-sidebar-background: 240 5.9% 10%;
+    --fab-sidebar-foreground: 240 4.8% 95.9%;
+    --fab-sidebar-primary: 224.3 76.3% 48%;
+    --fab-sidebar-primary-foreground: 0 0% 100%;
+    --fab-sidebar-accent: 240 3.7% 15.9%;
+    --fab-sidebar-accent-foreground: 240 4.8% 95.9%;
+    --fab-sidebar-border: 240 3.7% 15.9%;
+    --fab-sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
