@@ -18,10 +18,10 @@
 }
 
 .fab-dialog--focused {
-  box-shadow: 0 0 0 2px var(--fab-dialog-primary),
+  box-shadow: 0 0 0 2px var(--fab-dialog-focused-shadow-color),
               0 6px 10px -2px rgba(0, 0, 0, 0.1),
               0 2px 4px -1px rgba(0, 0, 0, 0.05);
-  border-color: var(--fab-dialog-focused-border); /* Utilisation de la nouvelle variable */
+  border-color: transparent; /* Suppression de la bordure */
 }
 
 .fab-dialog--expanded {

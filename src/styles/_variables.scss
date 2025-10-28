@@ -22,7 +22,7 @@ $dark-primary-color: rgb($dark-primary-r, $dark-primary-g, $dark-primary-b);
   --fab-dialog-foreground: hsl(var(--fab-foreground));
   --fab-dialog-accent: hsl(var(--fab-accent));
   --fab-dialog-accent-foreground: hsl(var(--fab-accent-foreground));
-  --fab-dialog-focused-border: #{lighten($light-primary-color, 50%)}; // Lighten primary for focused border by 50%
+  --fab-dialog-focused-shadow-color: #{lighten($light-primary-color, 50%)}; // Lighten primary for focused shadow by 50%
 
   // Rayon de bordure
   --fab-dialog-radius: var(--fab-radius);
@@ -73,5 +73,5 @@ $dark-primary-color: rgb($dark-primary-r, $dark-primary-g, $dark-primary-b);
 .dark {
   --fab-dialog-muted: #{darken(saturate($dark-primary-color, 10%), 50%)}; // Derived from primary for dark mode
   --fab-dialog-tab-selected-hover-background: #{darken($dark-primary-color, 10%)}; // Derived from primary for dark mode
-  --fab-dialog-focused-border: #{lighten($dark-primary-color, 50%)}; // Lighten primary for focused border by 50% in dark mode
+  --fab-dialog-focused-shadow-color: #{lighten($dark-primary-color, 50%)}; // Lighten primary for focused shadow by 50% in dark mode
 }
