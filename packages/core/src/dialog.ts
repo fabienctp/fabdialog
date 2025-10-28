@@ -55,8 +55,9 @@ export class Dialog {
         height = Math.max(viewportHeight * 0.8, 400); // 80% de la hauteur, min 400px
         break;
       case 'full':
-        width = viewportWidth; // 100% de la largeur
-        height = viewportHeight; // 100% de la hauteur
+        // For 'full', we'll use 100% in CSS, but for _previousPosition, we need a sensible pixel fallback
+        width = viewportWidth;
+        height = viewportHeight;
         break;
       case 'medium':
       default:
@@ -234,21 +235,21 @@ export class Dialog {
 
     if (this.dialogElement) {
       const { width, height } = this._calculateDimensions(this.options.size);
-      this.dialogElement.style.width = `${width}px`;
-      this.dialogElement.style.height = `${height}px`;
-
       let initialLeft = (window.innerWidth - width) / 2;
       let initialTop = (window.innerHeight - height) / 2;
-
-      this.dialogElement.style.left = `${initialLeft}px`;
-      this.dialogElement.style.top = `${initialTop}px`;
-      this.dialogElement.style.transform = "none";
 
       if (this.options.size === 'full') {
         this.isExpanded = true;
         this.dialogElement.classList.add('fab-dialog--expanded');
         this.setExpandIcon(true);
-        // Pour la taille 'full', _previousPosition doit être un état non agrandi par défaut
+        // For 'full' size, set width/height to 100%
+        this.dialogElement.style.width = '100%';
+        this.dialogElement.style.height = '100%';
+        this.dialogElement.style.left = '0';
+        this.dialogElement.style.top = '0';
+        this.dialogElement.style.transform = "none"; // Ensure no transform interferes
+
+        // For 'full' size, _previousPosition should store a non-expanded state
         const { width: mediumWidth, height: mediumHeight } = this._calculateDimensions('medium');
         const mediumLeft = (window.innerWidth - mediumWidth) / 2;
         const mediumTop = (window.innerHeight - mediumHeight) / 2;
@@ -262,6 +263,13 @@ export class Dialog {
         this.isExpanded = false;
         this.dialogElement.classList.remove('fab-dialog--expanded');
         this.setExpandIcon(false);
+        // Set initial size based on _calculateDimensions
+        this.dialogElement.style.width = `${width}px`;
+        this.dialogElement.style.height = `${height}px`;
+        this.dialogElement.style.left = `${initialLeft}px`;
+        this.dialogElement.style.top = `${initialTop}px`;
+        this.dialogElement.style.transform = "none";
+
         this._previousPosition = {
           left: this.dialogElement.style.left,
           top: this.dialogElement.style.top,

@@ -138,8 +138,8 @@ export class DialogManager {
     };
     dialog.dialogElement.style.left = '0';
     dialog.dialogElement.style.top = '0';
-    dialog.dialogElement.style.width = '100vw';
-    dialog.dialogElement.style.height = '100vh';
+    dialog.dialogElement.style.width = '100%'; // Changed from '100vw'
+    dialog.dialogElement.style.height = '100%'; // Changed from '100vh'
     dialog.dialogElement.style.transform = 'none';
     dialog.dialogElement.classList.add('fab-dialog--expanded');
     dialog.setExpandIcon(true); // Set to minimize icon
@@ -166,8 +166,8 @@ export class DialogManager {
       dialog.dialogElement.style.height = `${initialHeight}px`;
       const initialLeft = (window.innerWidth - initialWidth) / 2;
       const initialTop = (window.innerHeight - initialHeight) / 2;
-      dialog.dialogElement.style.left = `${initialLeft}px`;
-      dialog.dialogElement.style.top = `${initialTop}px`;
+      dialog.dialogElement!.style.left = `${initialLeft}px`;
+      dialog.dialogElement!.style.top = `${initialTop}px`;
     }
     dialog.dialogElement.classList.remove('fab-dialog--expanded');
     dialog.setExpandIcon(false); // Set to maximize icon
