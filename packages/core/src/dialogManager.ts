@@ -190,6 +190,8 @@ export class DialogManager {
     this.updateVanillaTabs();
   }
 
+  // This method is no longer strictly needed for bringToFront's z-index logic
+  // but can be kept for other potential uses or debugging.
   private getHighestZIndex(): number {
     let maxZ = 0;
     this.activeDialogs.forEach(dialog => {
@@ -213,18 +215,18 @@ export class DialogManager {
     }
 
     if (dialogToFocus.dialogElement) {
-      const currentDialogZIndex = parseInt(dialogToFocus.dialogElement.style.zIndex || '0', 10);
-      const highestZIndex = this.getHighestZIndex();
-
-      this.activeDialogs.forEach(dialog => {
-        dialog.dialogElement?.classList.remove('fab-dialog--focused');
-      });
-
-      if (currentDialogZIndex < highestZIndex || this.activeDialogs.size === 1) {
-        this.currentMaxZIndex = highestZIndex + 1;
-        dialogToFocus.dialogElement.style.zIndex = String(this.currentMaxZIndex);
-      }
+      // Always increment the max z-index and assign it to the focused dialog
+      this.currentMaxZIndex++;
+      dialogToFocus.dialogElement.style.zIndex = String(this.currentMaxZIndex);
       
+      // Remove focused class from all other dialogs
+      this.activeDialogs.forEach(dialog => {
+        if (dialog.id !== dialogId) {
+          dialog.dialogElement?.classList.remove('fab-dialog--focused');
+        }
+      });
+      
+      // Add focused class to the current dialog
       dialogToFocus.dialogElement.classList.add('fab-dialog--focused');
 
       if (this._focusedDialogId !== dialogId) {
