@@ -46,7 +46,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               Démarrage rapide
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Cette bibliothèque fournit un gestionnaire de boîtes de dialogue léger et personnalisable,
                 ainsi qu'une implémentation de boîtes de dialogue individuelles, le tout en TypeScript vanilla.
@@ -93,7 +93,7 @@ const Documentation: React.FC = () => {
             <h2 className="flex items-center text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               <Moon className="text-blue-500 dark:text-blue-400 mr-2" />Gestion du Mode Sombre
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Le mode sombre est géré directement dans la librairie.
               </p>
@@ -107,7 +107,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `DialogManager`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `DialogManager` est responsable de la gestion du cycle de vie, de l'état et de l'interaction
                 de toutes les boîtes de dialogue de l'application. C'est une instance singleton (`dialogManager`)
@@ -310,7 +310,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `Dialog`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `Dialog` représente une boîte de dialogue individuelle.
                 Bien que vous puissiez l'instancier directement, il est recommandé d'utiliser
