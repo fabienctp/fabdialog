@@ -15,10 +15,7 @@ $light-muted-foreground: #fff;
 $light-destructive : #aa1212;
 $light-destructive-foreground: #fff;
 $light-focused-shadow-color: #{color.adjust($light-primary, $lightness: 60%)};
-$light-popover-bg-color: #fff; // Popover background
-$light-popover-foreground: #000; // Popover foreground
-$light-card-bg-color: #fff; // Card background
-$light-card-foreground: #000; // Card foreground
+// Les variables $light-popover-bg-color, $light-popover-foreground, $light-card-bg-color, $light-card-foreground ont été supprimées.
 $radius: 0.5rem;
 $btn-radius: 0.375rem;
 
@@ -37,22 +34,19 @@ $dark-muted-foreground: #f0f0f0;
 $dark-destructive : #ef4444; // Red for dark mode
 $dark-destructive-foreground: #fff;
 $dark-focused-shadow-color: #{color.adjust($dark-primary, $lightness: -20%)};
-$dark-popover-bg-color: #2a2a2a; // Popover background (légèrement plus clair que le fond)
-$dark-popover-foreground: #e0e0e0; // Popover foreground
-$dark-card-bg-color: #1a1a1a; // Card background
-$dark-card-foreground: #e0e0e0; // Card foreground
+// Les variables $dark-popover-bg-color, $dark-popover-foreground, $dark-card-bg-color, $dark-card-foreground ont été supprimées.
 
 
 :root {
   // Couleurs
   --fab-dialog-background: #{$light-background-color};
   --fab-dialog-border: #{$light-border-color};
-  --fab-dialog-input: #{$light-input-bg-color}; // Ajouté
-  --fab-dialog-ring: #{$light-ring-color}; // Ajouté
+  --fab-dialog-input: #{$light-input-bg-color};
+  --fab-dialog-ring: #{$light-ring-color};
   --fab-dialog-primary: #{$light-primary};
   --fab-dialog-primary-foreground: #{$light-primary-foreground};
-  --fab-dialog-secondary: #{$light-muted-bg-color}; // Utilisation de muted pour secondary
-  --fab-dialog-secondary-foreground: #{$light-muted-foreground}; // Utilisation de muted-foreground pour secondary-foreground
+  --fab-dialog-secondary: #{$light-muted-bg-color};
+  --fab-dialog-secondary-foreground: #{$light-muted-foreground};
   --fab-dialog-muted: #{$light-muted-bg-color};
   --fab-dialog-muted-foreground: #{$light-muted-foreground};
   --fab-dialog-destructive: #{$light-destructive};
@@ -61,10 +55,7 @@ $dark-card-foreground: #e0e0e0; // Card foreground
   --fab-dialog-accent: #{$light-accent};
   --fab-dialog-accent-foreground: #{$light-accent-foreground};
   --fab-dialog-focused-shadow-color: #{$light-focused-shadow-color};
-  --fab-dialog-popover: #{$light-popover-bg-color}; // Ajouté
-  --fab-dialog-popover-foreground: #{$light-popover-foreground}; // Ajouté
-  --fab-dialog-card: #{$light-card-bg-color}; // Ajouté
-  --fab-dialog-card-foreground: #{$light-card-foreground}; // Ajouté
+  // Les variables --fab-dialog-popover, --fab-dialog-popover-foreground, --fab-dialog-card, --fab-dialog-card-foreground ont été supprimées.
 
   // Rayon de bordure
   --fab-dialog-radius: #{$radius};
@@ -91,14 +82,14 @@ $dark-card-foreground: #e0e0e0; // Card foreground
   --fab-dialog-tabs-gap: 0.5rem;
   --fab-dialog-tabs-sidebar-width: 200px; // Default width for left/right tabs
 
-  --fab-dialog-tab-background: var(--fab-dialog-muted); // Use derived muted
+  --fab-dialog-tab-background: var(--fab-dialog-muted);
   --fab-dialog-tab-foreground: var(--fab-dialog-muted-foreground);
   --fab-dialog-tab-hover-background: var(--fab-dialog-accent);
   --fab-dialog-tab-hover-foreground: var(--fab-dialog-accent-foreground);
-  --fab-dialog-tab-selected-background: var(--fab-dialog-primary); // Use derived primary
+  --fab-dialog-tab-selected-background: var(--fab-dialog-primary);
   --fab-dialog-tab-selected-foreground: var(--fab-dialog-primary-foreground);
   --fab-dialog-tab-selected-border: var(--fab-dialog-primary);
-  --fab-dialog-tab-selected-hover-background: #{color.adjust($light-primary, $lightness: 10%)}; // Derived from primary for light mode
+  --fab-dialog-tab-selected-hover-background: #{color.adjust($light-primary, $lightness: 10%)};
   --fab-dialog-tab-padding: 0.375rem 0.75rem;
   --fab-dialog-tab-font-size: 0.875rem;
   --fab-dialog-tab-radius: #{$radius};
@@ -115,12 +106,12 @@ $dark-card-foreground: #e0e0e0; // Card foreground
 .dark {
   --fab-dialog-background: #{$dark-background-color};
   --fab-dialog-border: #{$dark-border-color};
-  --fab-dialog-input: #{$dark-input-bg-color}; // Ajouté
-  --fab-dialog-ring: #{$dark-ring-color}; // Ajouté
+  --fab-dialog-input: #{$dark-input-bg-color};
+  --fab-dialog-ring: #{$dark-ring-color};
   --fab-dialog-primary: #{$dark-primary};
   --fab-dialog-primary-foreground: #{$dark-primary-foreground};
-  --fab-dialog-secondary: #{$dark-muted-bg-color}; // Utilisation de muted pour secondary
-  --fab-dialog-secondary-foreground: #{$dark-muted-foreground}; // Utilisation de muted-foreground pour secondary-foreground
+  --fab-dialog-secondary: #{$dark-muted-bg-color};
+  --fab-dialog-secondary-foreground: #{$dark-muted-foreground};
   --fab-dialog-muted: #{$dark-muted-bg-color};
   --fab-dialog-muted-foreground: #{$dark-muted-foreground};
   --fab-dialog-destructive: #{$dark-destructive};
@@ -129,10 +120,7 @@ $dark-card-foreground: #e0e0e0; // Card foreground
   --fab-dialog-accent: #{$dark-accent};
   --fab-dialog-accent-foreground: #{$dark-accent-foreground};
   --fab-dialog-focused-shadow-color: #{$dark-focused-shadow-color};
-  --fab-dialog-popover: #{$dark-popover-bg-color}; // Ajouté
-  --fab-dialog-popover-foreground: #{$dark-popover-foreground}; // Ajouté
-  --fab-dialog-card: #{$dark-card-bg-color}; // Ajouté
-  --fab-dialog-card-foreground: #{$dark-card-foreground}; // Ajouté
+  // Les variables --fab-dialog-popover, --fab-dialog-popover-foreground, --fab-dialog-card, --fab-dialog-card-foreground ont été supprimées.
 
   --fab-dialog-resize-handle-line-color: #{color.adjust($dark-primary, $lightness: -20%)};
 

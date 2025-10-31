@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils"; // Import cn utility for merging classes
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();
@@ -24,14 +25,39 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+      <DropdownMenuContent
+        align="end"
+        // Appliquer des classes Tailwind directes pour le fond, le texte et la bordure
+        className={cn(
+          "bg-white text-gray-900 border border-gray-200", // Styles pour le mode clair
+          "dark:bg-gray-800 dark:text-gray-50 dark:border-gray-700" // Styles pour le mode sombre
+        )}
+      >
+        <DropdownMenuItem
+          onClick={() => setTheme("light")}
+          className={cn(
+            "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
+            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+          )}
+        >
           Clair
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem
+          onClick={() => setTheme("dark")}
+          className={cn(
+            "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
+            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+          )}
+        >
           Sombre
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem
+          onClick={() => setTheme("system")}
+          className={cn(
+            "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
+            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+          )}
+        >
           Système
         </DropdownMenuItem>
       </DropdownMenuContent>

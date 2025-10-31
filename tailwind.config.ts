@@ -19,9 +19,9 @@ export default {
     },
     extend: {
       colors: {
-        border: "var(--fab-dialog-border)", // Ajouté
-        input: "var(--fab-dialog-input)", // Ajouté
-        ring: "var(--fab-dialog-ring)", // Ajouté
+        border: "var(--fab-dialog-border)",
+        input: "var(--fab-dialog-input)",
+        ring: "var(--fab-dialog-ring)",
         background: "var(--fab-dialog-background)",
         foreground: "var(--fab-dialog-foreground)",
         primary: {
@@ -44,14 +44,7 @@ export default {
           DEFAULT: "var(--fab-dialog-accent)",
           foreground: "var(--fab-dialog-accent-foreground)",
         },
-        popover: { // Ajouté
-          DEFAULT: "var(--fab-dialog-popover)",
-          foreground: "var(--fab-dialog-popover-foreground)",
-        },
-        card: { // Ajouté
-          DEFAULT: "var(--fab-dialog-card)",
-          foreground: "var(--fab-dialog-card-foreground)",
-        },
+        // Les définitions de 'popover' et 'card' ont été supprimées ici.
       },
       borderRadius: {
         lg: "var(--fab-dialog-radius)",
