@@ -34,7 +34,12 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
     <div className="flex flex-col items-center space-y-4">
       <div className="flex items-center space-x-4">
         <Select value={dialogSize} onValueChange={(value: DialogOptions['size']) => setDialogSize(value)}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger 
+            className={cn(
+              "w-[180px] bg-white text-gray-900 border border-gray-200", // Styles pour le mode clair
+              "dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700" // Styles pour le mode sombre
+            )}
+          >
             <SelectValue placeholder="Taille de la boîte de dialogue" />
           </SelectTrigger>
           <SelectContent
