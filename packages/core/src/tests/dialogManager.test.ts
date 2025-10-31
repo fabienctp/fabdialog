@@ -4,26 +4,21 @@ import { Dialog, DialogOptions } from '../dialog';
 // Import VanillaDialogTabs pour le type, mais le mock sera utilisé
 import { VanillaDialogTabs } from '../vanillaDialogTabs';
 
-// Définir les mocks à l'intérieur de la factory vi.mock et les exporter
-// pour qu'ils soient accessibles dans le fichier de test.
+// Déclarer les variables de mock au niveau supérieur avec 'let'
 let mockUpdateTabs: Mock;
 let MockVanillaDialogTabs: Mock;
 
+// Mock VanillaDialogTabs to isolate DialogManager tests
 vi.mock('../vanillaDialogTabs', () => {
+  // Assigner les fonctions de mock aux variables déclarées ci-dessus
   mockUpdateTabs = vi.fn();
   MockVanillaDialogTabs = vi.fn(() => ({
     updateTabs: mockUpdateTabs,
   }));
   return {
     VanillaDialogTabs: MockVanillaDialogTabs,
-    // Exporter les mocks pour pouvoir les réinitialiser et les interroger dans les tests
-    __mockUpdateTabs: mockUpdateTabs,
-    __MockVanillaDialogTabs: MockVanillaDialogTabs,
   };
 });
-
-// Importer les mocks exportés depuis le module mocké
-import { __mockUpdateTabs, __MockVanillaDialogTabs } from '../vanillaDialogTabs';
 
 describe('DialogManager', () => {
   let manager: DialogManager;
@@ -38,8 +33,8 @@ describe('DialogManager', () => {
     };
 
     // Réinitialiser les mocks avant chaque test
-    __mockUpdateTabs.mockClear();
-    __MockVanillaDialogTabs.mockClear();
+    mockUpdateTabs.mockClear();
+    MockVanillaDialogTabs.mockClear();
 
     // Mock Dialog class to control its behavior in manager tests
     vi.spyOn(Dialog.prototype, 'render').mockImplementation(function(this: Dialog) {
@@ -199,8 +194,8 @@ describe('DialogManager', () => {
   it('should initialize vanilla tabs and call updateTabs', () => {
     const mockContainer = document.createElement('div');
     manager.initVanillaTabs(mockContainer);
-    expect(__MockVanillaDialogTabs).toHaveBeenCalledWith(manager, { containerElement: mockContainer, position: 'bottom' });
-    expect(__mockUpdateTabs).toHaveBeenCalled(); // Use the specific mock for updateTabs
+    expect(MockVanillaDialogTabs).toHaveBeenCalledWith(manager, { containerElement: mockContainer, position: 'bottom' });
+    expect(mockUpdateTabs).toHaveBeenCalled(); // Use the specific mock for updateTabs
   });
 
   it('should call focus change listener when focused dialog changes', () => {
