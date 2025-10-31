@@ -44,8 +44,8 @@ export default {
           foreground: "var(--fab-dialog-accent-foreground)",
         },
         popover: {
-          DEFAULT: "var(--fab-dialog-popover)",
-          foreground: "var(--fab-dialog-popover-foreground)",
+          DEFAULT: "var(--fab-dialog-background)",
+          foreground: "var(--fab-dialog-background-foreground)",
         },
         card: {
           DEFAULT: "var(--fab-dialog-card)",
