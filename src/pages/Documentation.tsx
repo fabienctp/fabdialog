@@ -370,8 +370,8 @@ const Documentation: React.FC = () => {
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">size?</TableCell>
-                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'small'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'medium'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'large'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'full'</kbd> (optionnel)</TableCell>
-                    <TableCell>La taille initiale de la boîte de dialogue. Peut être <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'small'</kbd>, <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'medium'</kbd> (par défaut), <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'large'</kbd> ou <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'full'</kbd>.</TableCell>
+                    <TableCell>'small' | 'medium' | 'large' | 'full' (optionnel)</TableCell>
+                    <TableCell>La taille initiale de la boîte de dialogue. Peut être 'small', 'medium' (par défaut), 'large' ou 'full'.</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
