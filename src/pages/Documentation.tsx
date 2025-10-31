@@ -46,7 +46,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               Démarrage rapide
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Cette bibliothèque fournit un gestionnaire de boîtes de dialogue léger et personnalisable,
                 ainsi qu'une implémentation de boîtes de dialogue individuelles, le tout en TypeScript vanilla.
@@ -93,7 +93,7 @@ const Documentation: React.FC = () => {
             <h2 className="flex items-center text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               <Moon className="text-blue-500 dark:text-blue-400 mr-2" />Gestion du Mode Sombre
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Le mode sombre est géré directement dans la librairie.
               </p>
@@ -107,7 +107,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `DialogManager`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `DialogManager` est responsable de la gestion du cycle de vie, de l'état et de l'interaction
                 de toutes les boîtes de dialogue de l'application. C'est une instance singleton (`dialogManager`)
@@ -310,7 +310,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `Dialog`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_5px_8px_0px_rgba(0,_0,_0,_0.15)]">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `Dialog` représente une boîte de dialogue individuelle.
                 Bien que vous puissiez l'instancier directement, il est recommandé d'utiliser
@@ -344,22 +344,37 @@ const Documentation: React.FC = () => {
               <Separator className="my-6" />
 
               <h3 id="dialog-options-interface" className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Interface `DialogOptions`</h3>
-              <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
-                <code>
-                  interface DialogOptions &#123;<br />
-                  &nbsp;&nbsp;title: string;<br />
-                  &nbsp;&nbsp;content: string | HTMLElement;<br />
-                  &nbsp;&nbsp;onClose?: (dialogId: string) =&gt; void;<br />
-                  &nbsp;&nbsp;size?: 'small' | 'medium' | 'large' | 'full'; // Nouvelle propriété<br />
-                  &#125;
-                </code>
-              </pre>
-              <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
-                <li>`title`: Le titre affiché dans l'en-tête de la boîte de dialogue.</li>
-                <li>`content`: Le contenu de la boîte de dialogue, peut être une chaîne HTML ou un élément DOM.</li>
-                <li>`onClose` (optionnel): Une fonction de rappel appelée lorsque la boîte de dialogue est fermée.</li>
-                <li>`size` (optionnel): La taille initiale de la boîte de dialogue. Peut être `'small'`, `'medium'` (par défaut), `'large'` ou `'full'`.</li>
-              </ul>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[150px]">Propriété</TableHead>
+                    <TableHead className="w-[250px]">Type</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">`title`</TableCell>
+                    <TableCell>string</TableCell>
+                    <TableCell>Le titre affiché dans l'en-tête de la boîte de dialogue.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`content`</TableCell>
+                    <TableCell>string | HTMLElement</TableCell>
+                    <TableCell>Le contenu de la boîte de dialogue, peut être une chaîne HTML ou un élément DOM.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`onClose?`</TableCell>
+                    <TableCell>`(dialogId: string) => void` (optionnel)</TableCell>
+                    <TableCell>Une fonction de rappel appelée lorsque la boîte de dialogue est fermée.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">`size?`</TableCell>
+                    <TableCell>`'small' | 'medium' | 'large' | 'full'` (optionnel)</TableCell>
+                    <TableCell>La taille initiale de la boîte de dialogue. Peut être `'small'`, `'medium'` (par défaut), `'large'` ou `'full'`.</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
 
               <Separator className="my-6" />
 
