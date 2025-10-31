@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { Dialog, DialogOptions } from '../src/dialog';
-import { dialogManager } from '../src/dialogManager';
+import { Dialog, DialogOptions } from '../dialog';
+import { dialogManager } from '../dialogManager';
 
 // Mock dialogManager to isolate Dialog unit tests
 vi.mock('../src/dialogManager', () => {

@@ -1,5 +1,3 @@
-@import "./_variables";
-
 /* Styles for the custom vanilla dialog tabs */
 .fab-dialog-tabs-container {
   position: fixed;
@@ -10,6 +8,7 @@
   display: flex;
   gap: var(--fab-dialog-tabs-gap);
   overflow: hidden;
+  padding: 0.2rem;
   transition: all 0.2s ease-in-out; // Smooth transitions for position changes
 }
 
@@ -17,7 +16,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: 1px solid var(--fab-dialog-tabs-border);
   align-items: center;
   flex-direction: row;
   width: 100%;
@@ -28,7 +26,6 @@
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: 1px solid var(--fab-dialog-tabs-border);
   align-items: center;
   flex-direction: row;
   width: 100%;
@@ -40,7 +37,6 @@
   bottom: 0;
   left: 0;
   width: var(--fab-dialog-tabs-sidebar-width);
-  border-right: 1px solid var(--fab-dialog-tabs-border);
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
@@ -51,7 +47,6 @@
   bottom: 0;
   right: 0;
   width: var(--fab-dialog-tabs-sidebar-width);
-  border-left: 1px solid var(--fab-dialog-tabs-border);
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
@@ -154,7 +149,6 @@
   padding: 0.5rem;
   background-color: var(--fab-dialog-muted);
   color: var(--fab-dialog-muted-foreground);
-  border: 1px solid var(--fab-dialog-border);
   border-radius: var(--fab-dialog-tab-radius);
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
@@ -177,7 +171,7 @@
 
 /* Hover effect for close button in tabs */
 .fab-dialog-tab-close-button {
-  border-radius: var(--fab-dialog-tab-close-button-radius);
+  border-radius: var(--fab-dialog-button-radius);
   transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
   &:hover {
     background-color: var(--fab-dialog-tab-close-button-hover-background);

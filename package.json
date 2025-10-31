@@ -9,8 +9,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predev": "cd packages/core && npm install && npm run build",
-    "prebuild": "cd packages/core && npm install && npm run build"
+    "predev": "cd packages/core && pnpm install && pnpm run build",
+    "prebuild": "cd packages/core && pnpm install && pnpm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

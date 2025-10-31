@@ -12,7 +12,7 @@ export const DIALOG_EVENTS = {
 } as const;
 
 export class DialogManager {
-  private activeDialogs: Map<string, Dialog> = new Map();
+  public activeDialogs: Map<string, Dialog> = new Map();
   private currentMaxZIndex: number = 1000;
   private _focusChangeListener: ((dialogId: string | null) => void) | null = null;
   private _focusedDialogId: string | null = null;
@@ -188,21 +188,6 @@ export class DialogManager {
     this.dispatchDialogEvent(DIALOG_EVENTS.CLOSED, dialogId);
     this.reassignFocusAfterDialogAction(dialogId);
     this.updateVanillaTabs();
-  }
-
-  // This method is no longer strictly needed for bringToFront's z-index logic
-  // but can be kept for other potential uses or debugging.
-  private getHighestZIndex(): number {
-    let maxZ = 0;
-    this.activeDialogs.forEach(dialog => {
-      if (dialog.dialogElement && !dialog.isMinimized) {
-        const zIndex = parseInt(dialog.dialogElement.style.zIndex || '0', 10);
-        if (zIndex > maxZ) {
-          maxZ = zIndex;
-        }
-      }
-    });
-    return maxZ;
   }
 
   bringToFront(dialogId: string) {

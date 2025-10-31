@@ -74,7 +74,7 @@ export class Dialog {
     dialog.className = "fab-dialog";
     dialog.style.zIndex = "1000";
 
-    dialog.addEventListener("mousedown", (e) => {
+    dialog.addEventListener("mousedown", (_e) => {
       if (!this.isDragging && !this.isResizing) {
         dialogManager.bringToFront(this.id);
       }

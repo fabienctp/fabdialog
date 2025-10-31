@@ -60,7 +60,7 @@ const EventLog: React.FC = () => {
       <CardContent className="flex-grow overflow-hidden">
         <ScrollArea className="h-full">
           {events.length === 0 ? (
-            <p className="text-sm text-muted-foreground p-4">Aucun événement de dialogue récent.</p>
+            <p className="text-sm text- p-4">Aucun événement de dialogue récent.</p>
           ) : (
             <div className="space-y-2 p-4">
               {events.map((event) => (
@@ -68,7 +68,7 @@ const EventLog: React.FC = () => {
                   <p>
                     <span className="font-semibold text-primary">{event.timestamp}</span> -{" "}
                     <span className="font-medium">{event.type}</span>: Dialog{" "}
-                    <span className="text-muted-foreground">({event.title || event.dialogId})</span>
+                    <span className="text-">({event.title || event.dialogId})</span>
                   </p>
                   <Separator className="my-2" />
                 </div>

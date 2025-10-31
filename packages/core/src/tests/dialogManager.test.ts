@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { DialogManager, DIALOG_EVENTS } from '../src/dialogManager';
-import { Dialog, DialogOptions } from '../src/dialog';
-import { VanillaDialogTabs } from '../src/vanillaDialogTabs';
+import { DialogManager, DIALOG_EVENTS } from '../dialogManager';
+import { Dialog, DialogOptions } from '../dialog';
+import { VanillaDialogTabs } from '../vanillaDialogTabs';
 
 // Mock VanillaDialogTabs to isolate DialogManager tests
 vi.mock('../src/vanillaDialogTabs', () => {
@@ -15,7 +15,6 @@ vi.mock('../src/vanillaDialogTabs', () => {
 describe('DialogManager', () => {
   let manager: DialogManager;
   let mockDialogOptions: DialogOptions;
-  let mockDialog: Dialog;
 
   beforeEach(() => {
     manager = new DialogManager();
