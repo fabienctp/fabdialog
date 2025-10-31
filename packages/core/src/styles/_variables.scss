@@ -2,6 +2,7 @@
 
 // Light theme RGB components for primary
 $light-primary: #0F1928;
+$light-primary-foreground: #fff; // Ajout de cette ligne
 $light-accent: color.adjust($light-primary, $lightness: 10%);
 $light-accent-foreground: #fff;
 $light-background-color: #fff;
