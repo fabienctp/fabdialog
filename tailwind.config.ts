@@ -43,24 +43,6 @@ export default {
           DEFAULT: "var(--fab-dialog-accent)",
           foreground: "var(--fab-dialog-accent-foreground)",
         },
-        popover: {
-          DEFAULT: "var(--fab-dialog-background)",
-          foreground: "var(--fab-dialog-background-foreground)",
-        },
-        card: {
-          DEFAULT: "var(--fab-dialog-card)",
-          foreground: "var(--fab-dialog-card-foreground)",
-        },
-        sidebar: {
-          DEFAULT: "var(--fab-dialog-sidebar-background)",
-          foreground: "var(--fab-dialog-sidebar-foreground)",
-          primary: "var(--fab-dialog-sidebar-primary)",
-          "primary-foreground": "var(--fab-dialog-sidebar-primary-foreground)",
-          accent: "var(--fab-dialog-sidebar-accent)",
-          "accent-foreground": "var(--fab-dialog-sidebar-accent-foreground)",
-          border: "var(--fab-dialog-sidebar-border)",
-          ring: "var(--fab-dialog-sidebar-ring)",
-        },
       },
       borderRadius: {
         lg: "var(--fab-dialog-radius)",

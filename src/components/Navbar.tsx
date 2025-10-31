@@ -4,6 +4,7 @@ import React from "react";
 import { Home, BookOpenText, PlayCircle } from "lucide-react"; // Import PlayCircle icon
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle"; // Import ThemeToggle
 
 const Navbar: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const Navbar: React.FC = () => {
         <Link to="/" className="text-2xl font-bold">
           FabDialog
         </Link>
-        <div className="space-x-4">
+        <div className="flex items-center space-x-4"> {/* Use flex to align items */}
           <Button variant="ghost" asChild>
             <Link to="/">
               <Home className="mr-2 h-4 w-4" /> Accueil
@@ -28,6 +29,7 @@ const Navbar: React.FC = () => {
               <BookOpenText className="mr-2 h-4 w-4" /> Documentation
             </Link>
           </Button>
+          <ThemeToggle /> {/* Add the ThemeToggle component */}
         </div>
       </div>
     </nav>
