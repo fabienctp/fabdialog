@@ -33,11 +33,11 @@ const Documentation: React.FC = () => {
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1"> {/* Flex container for sidebar and main content */}
         <DocumentationSidebar />
-        <main className="flex-grow max-w-4xl mx-auto p-4 py-8 lg:ml-0 lg:mr-auto lg:px-8"> {/* Adjusted max-width and margins for main content */}
+        <main className="flex-grow mx-auto p-4 py-8 lg:ml-0 lg:mr-auto lg:px-8"> {/* Adjusted max-width and margins for main content */}
           <h1 className="text-4xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">
             Documentation de la Bibliothèque de Boîtes de Dialogue Vanilla
           </h1>
