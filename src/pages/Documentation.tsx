@@ -126,23 +126,23 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">createDialog(options: DialogOptions): Dialog</kbd></TableCell>
+                    <TableCell className="font-medium">createDialog(options: DialogOptions): Dialog</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">options: DialogOptions</kbd> (Obligatoire)
+                      options: DialogOptions (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Crée et affiche une nouvelle boîte de dialogue.
                       <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
                         <li>
-                          <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">options</kbd>: Un objet <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">DialogOptions</kbd> définissant le titre, le contenu et un rappel <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">onClose</kbd>.
+                          options: Un objet <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">DialogOptions</kbd> définissant le titre, le contenu et un rappel <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">onClose</kbd>.
                         </li>
                       </ul>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">registerDialog(dialog: Dialog)</kbd></TableCell>
+                    <TableCell className="font-medium">registerDialog(dialog: Dialog)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialog: Dialog</kbd> (Obligatoire)
+                      dialog: Dialog (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Enregistre une boîte de dialogue existante auprès du gestionnaire.
@@ -150,58 +150,58 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">toggleDialogMinimize(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">toggleDialogMinimize(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Bascule l'état minimisé/restauré d'une boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">minimizeDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">minimizeDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Minimise une boîte de dialogue spécifique.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">restoreDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">restoreDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Restaure une boîte de dialogue minimisée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">toggleDialogExpand(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">toggleDialogExpand(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Bascule l'état agrandi/contracté d'une boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">expandDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">expandDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Agrandit une boîte de dialogue à la taille maximale de la fenêtre.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">contractDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">contractDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Restaure une boîte de dialogue agrandie à sa taille et position précédentes.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">closeDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">closeDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Ferme et supprime une boîte de dialogue spécifique.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">unregisterDialog(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">unregisterDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Désenregistre une boîte de dialogue du gestionnaire.
@@ -209,16 +209,16 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">bringToFront(dialogId: string)</kbd></TableCell>
+                    <TableCell className="font-medium">bringToFront(dialogId: string)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogId: string</kbd> (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Amène une boîte de dialogue au premier plan (augmente son <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">z-index</kbd>).</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">initVanillaTabs(containerElement: HTMLElement)</kbd></TableCell>
+                    <TableCell className="font-medium">initVanillaTabs(containerElement: HTMLElement)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">containerElement: HTMLElement</kbd> (Obligatoire)
+                      containerElement: HTMLElement (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Initialise le système d'onglets pour les boîtes de dialogue.
@@ -226,9 +226,9 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">onFocusChange(callback: (dialogId: string | null) &gt; void)</kbd></TableCell>
+                    <TableCell className="font-medium">onFocusChange(callback: (dialogId: string | null) &gt; void)</TableCell>
                     <TableCell>
-                      <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">callback: (dialogId: string | null) &gt; void</kbd> (Obligatoire)
+                      callback: (dialogId: string | null) &gt; void (Obligatoire)
                     </TableCell>
                     <TableCell>Définit un rappel qui sera appelé lorsque la boîte de dialogue focalisée change.</TableCell>
                   </TableRow>
@@ -247,7 +247,7 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">focusedDialogId: string | null</kbd></TableCell>
+                    <TableCell className="font-medium">focusedDialogId: string | null</TableCell>
                     <TableCell>Un accesseur (<kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">getter</kbd>) qui renvoie l'ID de la boîte de dialogue actuellement focalisée, ou <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">null</kbd> s'il n'y en a pas.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -332,7 +332,7 @@ const Documentation: React.FC = () => {
                   &nbsp;&nbsp;title: "Ma boîte de dialogue directe",<br />
                   &nbsp;&nbsp;content: "Ceci est une boîte de dialogue créée directement.",<br />
                   &nbsp;&nbsp;size: 'small',<br />
-                  &nbsp;&nbsp;onClose: (id) =&gt; console.log(&#96;Boîte de dialogue directe &#36;&#123;id&#125; fermée&#96;),<br />
+                  &nbsp;&nbsp;onClose: (id) =&gt; console.log(&#96;Boîte de dialogue &#36;&#123;id&#125; fermée&#96;),<br />
                   &#125;);<br />
                   <br />
                   myDirectDialog.render();<br />
@@ -354,23 +354,23 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">title</kbd></TableCell>
-                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">string</kbd></TableCell>
+                    <TableCell className="font-medium">title</TableCell>
+                    <TableCell>string</TableCell>
                     <TableCell>Le titre affiché dans l'en-tête de la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">content</kbd></TableCell>
-                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">string | HTMLElement</kbd></TableCell>
+                    <TableCell className="font-medium">content</TableCell>
+                    <TableCell>string | HTMLElement</TableCell>
                     <TableCell>Le contenu de la boîte de dialogue, peut être une chaîne HTML ou un élément DOM.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">onClose?</kbd></TableCell>
-                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">(dialogId: string) &gt; void</kbd> (optionnel)</TableCell>
+                    <TableCell className="font-medium">onClose?</TableCell>
+                    <TableCell>(dialogId: string) &gt; void (optionnel)</TableCell>
                     <TableCell>Une fonction de rappel appelée lorsque la boîte de dialogue est fermée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">size?</kbd></TableCell>
-                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'small' | 'medium' | 'large' | 'full'</kbd> (optionnel)</TableCell>
+                    <TableCell className="font-medium">size?</TableCell>
+                    <TableCell><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'small'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'medium'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'large'</kbd> | <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'full'</kbd> (optionnel)</TableCell>
                     <TableCell>La taille initiale de la boîte de dialogue. Peut être <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'small'</kbd>, <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'medium'</kbd> (par défaut), <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'large'</kbd> ou <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">'full'</kbd>.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -388,19 +388,19 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">id: string</kbd></TableCell>
+                    <TableCell className="font-medium">id: string</TableCell>
                     <TableCell>L'identifiant unique de la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">options: DialogOptions</kbd></TableCell>
+                    <TableCell className="font-medium">options: DialogOptions</TableCell>
                     <TableCell>Les options utilisées pour créer la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">isMinimized: boolean</kbd></TableCell>
+                    <TableCell className="font-medium">isMinimized: boolean</TableCell>
                     <TableCell>Indique si la boîte de dialogue est actuellement minimisée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">isExpanded: boolean</kbd></TableCell>
+                    <TableCell className="font-medium">isExpanded: boolean</TableCell>
                     <TableCell>Indique si la boîte de dialogue est actuellement agrandie.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -419,7 +419,7 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">render()</kbd></TableCell>
+                    <TableCell className="font-medium">render()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>
                       Crée l'élément DOM de la boîte de dialogue et l'ajoute au corps du document.
@@ -427,22 +427,22 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">toggleExpand()</kbd></TableCell>
+                    <TableCell className="font-medium">toggleExpand()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Bascule l'état agrandi/contracté de cette boîte de dialogue via le <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogManager</kbd>.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">minimize()</kbd></TableCell>
+                    <TableCell className="font-medium">minimize()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Minimise cette boîte de dialogue via le <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogManager</kbd>.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">restore()</kbd></TableCell>
+                    <TableCell className="font-medium">restore()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Restaure cette boîte de dialogue via le <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogManager</kbd>.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium"><kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">close()</kbd></TableCell>
+                    <TableCell className="font-medium">close()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>
                       Ferme cette boîte de dialogue, la supprime du DOM et la désenregistre du <kbd className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dialogManager</kbd>.
