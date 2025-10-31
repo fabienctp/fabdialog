@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import DocumentationSidebar from "@/components/DocumentationSidebar"; // Import the new sidebar component
+import { Info, Moon } from "lucide-react";
 
 const Documentation: React.FC = () => {
   const location = useLocation();
@@ -39,14 +40,16 @@ const Documentation: React.FC = () => {
         <DocumentationSidebar />
         <main className="flex-grow mx-auto p-4 py-8 lg:ml-0 lg:mr-auto lg:px-8"> {/* Adjusted max-width and margins for main content */}
           <h1 className="text-4xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">
-            Documentation de la Bibliothèque de Boîtes de Dialogue Vanilla
+            Documentation FabDialog
           </h1>
 
           <section id="demarrage-rapide" className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
-              Démarrage Rapide
-            </h2>
             <Card className="p-6">
+              <CardHeader>
+                <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+                  Démarrage rapide
+                </h2>
+              </CardHeader>
               <CardContent>
                 <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                   Cette bibliothèque fournit un gestionnaire de boîtes de dialogue léger et personnalisable,
@@ -63,7 +66,7 @@ const Documentation: React.FC = () => {
                     npm install fab-dialog
                   </code>
                 </pre>
-                
+
                 <h3 id="utilisation-de-base" className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Utilisation de base</h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
                   Importez le `dialogManager` et la classe `Dialog` depuis le package `fab-dialog`.
@@ -87,14 +90,23 @@ const Documentation: React.FC = () => {
                     // &#125;
                   </code>
                 </pre>
+              </CardContent>
+            </Card>
+          </section>
 
-                <Separator className="my-6" />
+          <section id="mode-sombre" className="mb-12">
+            <Card className="p-6">
+              <CardHeader>
+                <CardTitle>
+                  <h2 className="flex items-center"><Moon className="text-blue-500 dark:text-blue-400 mr-2" />Gestion du Mode Sombre</h2>
+                </CardTitle>
+                <CardDescription>
+                  Le mode sombre est géré directement dans la librairie.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="b-4">
 
-                <h3 id="gestion-du-mode-sombre" className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Gestion du Mode Sombre</h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  Le thème de l'application (clair ou sombre) est géré en ajoutant la classe <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">light</code> ou <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">dark</code> directement à la balise <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">&lt;html&gt;</code> de votre document.
-                  Cela permet à Tailwind CSS d'appliquer les styles conditionnels définis avec le préfixe <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">dark:</code>.
-                </p>
+                Le thème de l'application (clair ou sombre) est géré en ajoutant la classe <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">light</code> ou <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">dark</code> directement à la balise <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-muted-foreground">&lt;html&gt;</code> de votre document.
               </CardContent>
             </Card>
           </section>
