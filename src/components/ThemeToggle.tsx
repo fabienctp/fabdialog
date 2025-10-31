@@ -30,14 +30,14 @@ export function ThemeToggle() {
         // Appliquer des classes Tailwind directes pour le fond, le texte et la bordure
         className={cn(
           "bg-white text-gray-900 border border-gray-200", // Styles pour le mode clair
-          "dark:bg-gray-800 dark:text-gray-50 dark:border-gray-700" // Styles pour le mode sombre
+          "dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700" // Styles pour le mode sombre avec meilleur contraste
         )}
       >
         <DropdownMenuItem
           onClick={() => setTheme("light")}
           className={cn(
             "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
-            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+            "dark:hover:bg-gray-700 dark:hover:text-gray-100" // Styles pour le mode sombre avec meilleur contraste
           )}
         >
           Clair
@@ -46,7 +46,7 @@ export function ThemeToggle() {
           onClick={() => setTheme("dark")}
           className={cn(
             "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
-            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+            "dark:hover:bg-gray-700 dark:hover:text-gray-100" // Styles pour le mode sombre avec meilleur contraste
           )}
         >
           Sombre
@@ -55,7 +55,7 @@ export function ThemeToggle() {
           onClick={() => setTheme("system")}
           className={cn(
             "hover:bg-gray-100 hover:text-gray-900", // Styles pour le mode clair
-            "dark:hover:bg-gray-700 dark:hover:text-gray-50" // Styles pour le mode sombre
+            "dark:hover:bg-gray-700 dark:hover:text-gray-100" // Styles pour le mode sombre avec meilleur contraste
           )}
         >
           Système

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { dialogManager } from "@my-app/core/src/dialogManager";
 import { DialogOptions } from "@my-app/core/src/dialog"; // Import DialogOptions
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; // Import shadcn Select components
+import { cn } from "@/lib/utils"; // Import cn utility for merging classes
 
 interface VanillaDialogWrapperProps {
   title: string;
@@ -36,7 +37,12 @@ const VanillaDialogWrapper: React.FC<VanillaDialogWrapperProps> = ({ title, cont
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Taille de la boîte de dialogue" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent
+            className={cn(
+              "bg-white text-gray-900 border border-gray-200", // Styles pour le mode clair
+              "dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700" // Styles pour le mode sombre
+            )}
+          >
             <SelectItem value="small">Petite</SelectItem>
             <SelectItem value="medium">Moyenne</SelectItem>
             <SelectItem value="large">Grande</SelectItem>
