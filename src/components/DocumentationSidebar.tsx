@@ -38,6 +38,7 @@ const docSections: DocSection[] = [
     title: "`Dialog`",
     level: 2,
     subsections: [
+      { id: "creation-dialog-directe", title: "Création d'une `Dialog` directe", level: 3 }, // Nouvelle sous-section
       { id: "dialog-options-interface", title: "Interface `DialogOptions`", level: 3 },
       { id: "dialog-proprietes", "title": "Propriétés", level: 3 },
       { id: "dialog-methodes", title: "Méthodes", level: 3 },

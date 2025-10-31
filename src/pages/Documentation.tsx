@@ -318,6 +318,31 @@ const Documentation: React.FC = () => {
               </p>
               <Separator className="my-6" />
 
+              <h3 id="creation-dialog-directe" className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Création d'une `Dialog` directe</h3>
+              <p className="mb-4 text-gray-700 dark:text-gray-300">
+                Vous pouvez créer et afficher une instance de `Dialog` directement, sans passer par le `dialogManager`.
+                Cependant, dans ce cas, la boîte de dialogue ne sera pas gérée par le `dialogManager` (elle n'apparaîtra pas dans les onglets, par exemple)
+                et vous devrez gérer son cycle de vie manuellement.
+              </p>
+              <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
+                <code>
+                  import &#123; Dialog &#125; from "fab-dialog";<br />
+                  <br />
+                  const myDirectDialog = new Dialog(&#123;<br />
+                  &nbsp;&nbsp;title: "Ma boîte de dialogue directe",<br />
+                  &nbsp;&nbsp;content: "Ceci est une boîte de dialogue créée directement.",<br />
+                  &nbsp;&nbsp;size: 'small',<br />
+                  &nbsp;&nbsp;onClose: (id) =&gt; console.log(&#96;Boîte de dialogue directe &#36;&#123;id&#125; fermée&#96;),<br />
+                  &#125;);<br />
+                  <br />
+                  myDirectDialog.render();<br />
+                  <br />
+                  // Pour la fermer manuellement plus tard :<br />
+                  // myDirectDialog.close();
+                </code>
+              </pre>
+              <Separator className="my-6" />
+
               <h3 id="dialog-options-interface" className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Interface `DialogOptions`</h3>
               <pre className="bg-gray-800 text-white p-4 rounded-md text-sm mb-6 overflow-x-auto">
                 <code>

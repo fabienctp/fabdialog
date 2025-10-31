@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroBanner: React.FC = () => {
   return (
@@ -15,7 +16,9 @@ const HeroBanner: React.FC = () => {
         </p>
         <div className="mt-10 flex justify-center">
           <Button size="lg">
-            Commencer l'exploration
+            <Link to="/documentation">
+              Commencer
+            </Link>
           </Button>
         </div>
       </div>
