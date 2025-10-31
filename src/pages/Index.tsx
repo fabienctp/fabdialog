@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
       <Navbar />
-      <main className="flex-grow container mx-auto p-4 flex flex-col items-center">
+      <main className="flex-grow mx-auto p-4 flex flex-col items-center">
         <HeroBanner /> {/* Display the HeroBanner */}
 
         <FeaturesSection /> {/* Display the new FeaturesSection */}

@@ -40,7 +40,7 @@ const features = [
 const FeaturesSection: React.FC = () => {
   return (
     <section className="w-full py-12 md:py-20 mb-12">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
             Découvrez les Capacités de FabDialog

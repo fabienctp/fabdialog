@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle"; // Import ThemeToggle
 const Navbar: React.FC = () => {
   return (
     <nav className="bg-primary text-primary-foreground p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="mx-auto flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
           FabDialog
         </Link>
