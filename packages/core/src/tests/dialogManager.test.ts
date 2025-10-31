@@ -10,9 +10,10 @@ const MockVanillaDialogTabs = vi.fn(() => ({
 }));
 
 // Mock VanillaDialogTabs to isolate DialogManager tests
-vi.mock('../src/vanillaDialogTabs', () => {
+// Corrected path: it should be '../vanillaDialogTabs' relative to the test file
+vi.mock('../vanillaDialogTabs', () => {
   return {
-    VanillaDialogTabs: MockVanillaDialogTabs, // Use the explicitly defined mock
+    VanillaDialogTabs: MockVanillaDialogTabs,
   };
 });
 
