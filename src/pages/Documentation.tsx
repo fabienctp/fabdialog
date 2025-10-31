@@ -46,7 +46,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               Démarrage rapide
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.1)]">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Cette bibliothèque fournit un gestionnaire de boîtes de dialogue léger et personnalisable,
                 ainsi qu'une implémentation de boîtes de dialogue individuelles, le tout en TypeScript vanilla.
@@ -93,7 +93,7 @@ const Documentation: React.FC = () => {
             <h2 className="flex items-center text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               <Moon className="text-blue-500 dark:text-blue-400 mr-2" />Gestion du Mode Sombre
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.1)]">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
                 Le mode sombre est géré directement dans la librairie.
               </p>
@@ -107,7 +107,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `DialogManager`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.1)]">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `DialogManager` est responsable de la gestion du cycle de vie, de l'état et de l'interaction
                 de toutes les boîtes de dialogue de l'application. C'est une instance singleton (`dialogManager`)
@@ -126,23 +126,23 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">`createDialog(options: DialogOptions): Dialog`</TableCell>
+                    <TableCell className="font-medium">createDialog(options: DialogOptions): Dialog</TableCell>
                     <TableCell>
-                      `options: DialogOptions` (Obligatoire)
+                      options: DialogOptions (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Crée et affiche une nouvelle boîte de dialogue.
                       <ul className="list-disc list-inside ml-4 mt-2 text-gray-600 dark:text-gray-400">
                         <li>
-                          `options`: Un objet `DialogOptions` définissant le titre, le contenu et un rappel `onClose`.
+                          options: Un objet `DialogOptions` définissant le titre, le contenu et un rappel `onClose`.
                         </li>
                       </ul>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`registerDialog(dialog: Dialog)`</TableCell>
+                    <TableCell className="font-medium">registerDialog(dialog: Dialog)</TableCell>
                     <TableCell>
-                      `dialog: Dialog` (Obligatoire)
+                      dialog: Dialog (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Enregistre une boîte de dialogue existante auprès du gestionnaire.
@@ -150,75 +150,75 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`toggleDialogMinimize(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">toggleDialogMinimize(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Bascule l'état minimisé/restauré d'une boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`minimizeDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">minimizeDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Minimise une boîte de dialogue spécifique.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`restoreDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">restoreDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Restaure une boîte de dialogue minimisée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`toggleDialogExpand(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">toggleDialogExpand(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Bascule l'état agrandi/contracté d'une boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`expandDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">expandDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Agrandit une boîte de dialogue à la taille maximale de la fenêtre.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`contractDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">contractDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Restaure une boîte de dialogue agrandie à sa taille et position précédentes.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`closeDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">closeDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Ferme et supprime une boîte de dialogue spécifique.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`unregisterDialog(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">unregisterDialog(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Désenregistre une boîte de dialogue du gestionnaire.
-                      Généralement appelée en interne par la méthode `close()` de `Dialog`.
+                      Généralement appelée en interne par la méthode close() de Dialog.
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`bringToFront(dialogId: string)`</TableCell>
+                    <TableCell className="font-medium">bringToFront(dialogId: string)</TableCell>
                     <TableCell>
-                      `dialogId: string` (Obligatoire)
+                      dialogId: string (Obligatoire)
                     </TableCell>
                     <TableCell>Amène une boîte de dialogue au premier plan (augmente son `z-index`).</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`initVanillaTabs(containerElement: HTMLElement)`</TableCell>
+                    <TableCell className="font-medium">initVanillaTabs(containerElement: HTMLElement)</TableCell>
                     <TableCell>
-                      `containerElement: HTMLElement` (Obligatoire)
+                      containerElement: HTMLElement (Obligatoire)
                     </TableCell>
                     <TableCell>
                       Initialise le système d'onglets pour les boîtes de dialogue.
@@ -226,9 +226,9 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`onFocusChange(callback: (dialogId: string | null) =&gt; void)`</TableCell>
+                    <TableCell className="font-medium">onFocusChange(callback: (dialogId: string | null) =&gt; void)</TableCell>
                     <TableCell>
-                      `callback: (dialogId: string | null) =&gt; void` (Obligatoire)
+                      callback: (dialogId: string | null) =&gt; void (Obligatoire)
                     </TableCell>
                     <TableCell>Définit un rappel qui sera appelé lorsque la boîte de dialogue focalisée change.</TableCell>
                   </TableRow>
@@ -247,7 +247,7 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">`focusedDialogId: string | null`</TableCell>
+                    <TableCell className="font-medium">focusedDialogId: string | null</TableCell>
                     <TableCell>Un accesseur (`getter`) qui renvoie l'ID de la boîte de dialogue actuellement focalisée, ou `null` s'il n'y en a pas.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -310,7 +310,7 @@ const Documentation: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
               `Dialog`
             </h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.1)]">
               <p className="mb-4 text-gray-700 dark:text-gray-300">
                 La classe `Dialog` représente une boîte de dialogue individuelle.
                 Bien que vous puissiez l'instancier directement, il est recommandé d'utiliser
@@ -354,24 +354,24 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">`title`</TableCell>
+                    <TableCell className="font-medium">title</TableCell>
                     <TableCell>string</TableCell>
                     <TableCell>Le titre affiché dans l'en-tête de la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`content`</TableCell>
+                    <TableCell className="font-medium">content</TableCell>
                     <TableCell>string | HTMLElement</TableCell>
                     <TableCell>Le contenu de la boîte de dialogue, peut être une chaîne HTML ou un élément DOM.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`onClose?`</TableCell>
-                    <TableCell>`(dialogId: string) => void` (optionnel)</TableCell>
+                    <TableCell className="font-medium">onClose?</TableCell>
+                    <TableCell>(dialogId: string) {'=>'} void (optionnel)</TableCell>
                     <TableCell>Une fonction de rappel appelée lorsque la boîte de dialogue est fermée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`size?`</TableCell>
-                    <TableCell>`'small' | 'medium' | 'large' | 'full'` (optionnel)</TableCell>
-                    <TableCell>La taille initiale de la boîte de dialogue. Peut être `'small'`, `'medium'` (par défaut), `'large'` ou `'full'`.</TableCell>
+                    <TableCell className="font-medium">size?</TableCell>
+                    <TableCell>'small' | 'medium' | 'large' | 'full' (optionnel)</TableCell>
+                    <TableCell>La taille initiale de la boîte de dialogue. Peut être 'small', 'medium' (par défaut), 'large' ou 'full'.</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -388,19 +388,19 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">`id: string`</TableCell>
+                    <TableCell className="font-medium">id: string</TableCell>
                     <TableCell>L'identifiant unique de la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`options: DialogOptions`</TableCell>
+                    <TableCell className="font-medium">options: DialogOptions</TableCell>
                     <TableCell>Les options utilisées pour créer la boîte de dialogue.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`isMinimized: boolean`</TableCell>
+                    <TableCell className="font-medium">isMinimized: boolean</TableCell>
                     <TableCell>Indique si la boîte de dialogue est actuellement minimisée.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`isExpanded: boolean`</TableCell>
+                    <TableCell className="font-medium">isExpanded: boolean</TableCell>
                     <TableCell>Indique si la boîte de dialogue est actuellement agrandie.</TableCell>
                   </TableRow>
                 </TableBody>
@@ -419,7 +419,7 @@ const Documentation: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">`render()`</TableCell>
+                    <TableCell className="font-medium">render()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>
                       Crée l'élément DOM de la boîte de dialogue et l'ajoute au corps du document.
@@ -427,22 +427,22 @@ const Documentation: React.FC = () => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`toggleExpand()`</TableCell>
+                    <TableCell className="font-medium">toggleExpand()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Bascule l'état agrandi/contracté de cette boîte de dialogue via le `dialogManager`.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`minimize()`</TableCell>
+                    <TableCell className="font-medium">minimize()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Minimise cette boîte de dialogue via le `dialogManager`.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`restore()`</TableCell>
+                    <TableCell className="font-medium">restore()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>Restaure cette boîte de dialogue via le `dialogManager`.</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">`close()`</TableCell>
+                    <TableCell className="font-medium">close()</TableCell>
                     <TableCell>Aucune</TableCell>
                     <TableCell>
                       Ferme cette boîte de dialogue, la supprime du DOM et la désenregistre du `dialogManager`.
