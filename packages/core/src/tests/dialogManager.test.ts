@@ -1,14 +1,18 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi, Mock } from 'vitest';
 import { DialogManager, DIALOG_EVENTS } from '../dialogManager';
 import { Dialog, DialogOptions } from '../dialog';
 import { VanillaDialogTabs } from '../vanillaDialogTabs';
 
+// Define the mock functions explicitly
+const mockUpdateTabs = vi.fn();
+const MockVanillaDialogTabs = vi.fn(() => ({
+  updateTabs: mockUpdateTabs,
+}));
+
 // Mock VanillaDialogTabs to isolate DialogManager tests
 vi.mock('../src/vanillaDialogTabs', () => {
   return {
-    VanillaDialogTabs: vi.fn(() => ({
-      updateTabs: vi.fn(),
-    })),
+    VanillaDialogTabs: MockVanillaDialogTabs, // Use the explicitly defined mock
   };
 });
 
@@ -49,7 +53,7 @@ describe('DialogManager', () => {
     vi.spyOn(window, 'dispatchEvent'); // Spy on window.dispatchEvent for custom events
 
     // Clear all mocks before each test
-    vi.clearAllMocks();
+    vi.clearAllMocks(); // This will clear calls to MockVanillaDialogTabs and mockUpdateTabs
   });
 
   afterEach(() => {
@@ -182,8 +186,8 @@ describe('DialogManager', () => {
   it('should initialize vanilla tabs and call updateTabs', () => {
     const mockContainer = document.createElement('div');
     manager.initVanillaTabs(mockContainer);
-    expect(VanillaDialogTabs).toHaveBeenCalledWith(manager, { containerElement: mockContainer, position: 'bottom' });
-    expect((VanillaDialogTabs as any).mock.instances[0].updateTabs).toHaveBeenCalled();
+    expect(MockVanillaDialogTabs).toHaveBeenCalledWith(manager, { containerElement: mockContainer, position: 'bottom' });
+    expect(mockUpdateTabs).toHaveBeenCalled(); // Use the specific mock for updateTabs
   });
 
   it('should call focus change listener when focused dialog changes', () => {
