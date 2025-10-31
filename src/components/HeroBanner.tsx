@@ -14,7 +14,7 @@ const HeroBanner: React.FC = () => {
           Découvrez la puissance des boîtes de dialogue interactives et des composants modernes pour votre application React.
         </p>
         <div className="mt-10 flex justify-center">
-          <Button size="lg" className="bg-primary-foreground text-primary hover:bg-gray-200 transition-colors duration-300">
+          <Button size="lg">
             Commencer l'exploration
           </Button>
         </div>

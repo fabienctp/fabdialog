@@ -22,18 +22,18 @@ $btn-radius: 0.375rem;
 // Dark theme RGB components for primary
 $dark-primary: #60A5FA; // A lighter blue for dark mode
 $dark-primary-foreground: #000;
-$dark-accent: color.adjust($dark-primary, $lightness: -10%);
-$dark-accent-foreground: #000;
+$dark-accent: color.adjust($dark-primary, $lightness: -50%);
+$dark-accent-foreground: #ededed;
 $dark-background-color: #1a1a1a; // Darker background
-$dark-foreground: #e0e0e0; // Lighter text
+$dark-foreground: #ededed; // Lighter text
 $dark-border-color: #3a3a3a; // Couleur de bordure plus foncée
 $dark-input-bg-color: #2a2a2a; // Couleur de fond pour les inputs
 $dark-ring-color: #60A5FA; // Couleur de l'anneau de focus
-$dark-muted-bg-color: #2a2a2a;
+$dark-muted-bg-color: color.adjust(color.adjust($dark-primary, $saturation: -20%), $lightness: -60%);
 $dark-muted-foreground: #f0f0f0;
-$dark-destructive : #ef4444; // Red for dark mode
+$dark-destructive : #671313; // Red for dark mode
 $dark-destructive-foreground: #fff;
-$dark-focused-shadow-color: #{color.adjust($dark-primary, $lightness: -20%)};
+$dark-focused-shadow-color: #{color.adjust($dark-primary, $lightness: -40%)};
 // Les variables $dark-popover-bg-color, $dark-popover-foreground, $dark-card-bg-color, $dark-card-foreground ont été supprimées.
 
 
