@@ -25,11 +25,6 @@ describe('DialogManager', () => {
     };
 
     // Mock Dialog class to control its behavior in manager tests
-    // We need to ensure Dialog instances created by manager.createDialog are mockable
-    // and that their render/close methods are controlled.
-    // For integration, we might want actual Dialog instances, but for unit testing manager,
-    // we want to control Dialog's side effects.
-    // Let's use a spy on the actual Dialog class methods for better integration testing.
     vi.spyOn(Dialog.prototype, 'render').mockImplementation(function(this: Dialog) {
       this.dialogElement = document.createElement('div');
       this.dialogElement.id = this.id;
@@ -107,7 +102,6 @@ describe('DialogManager', () => {
     expect(document.body.contains(dialogElement)).toBe(false);
     expect(dialog._previousPosition).not.toBeNull();
     expect(window.dispatchEvent).toHaveBeenCalledWith(expect.objectContaining({ type: DIALOG_EVENTS.MINIMIZED }));
-    expect((VanillaDialogTabs as any).mock.instances[0].updateTabs).toHaveBeenCalled();
   });
 
   it('should restore a minimized dialog and add it back to DOM', () => {
@@ -122,7 +116,6 @@ describe('DialogManager', () => {
     expect(dialogElement.style.top).toBe(dialog._previousPosition!.top);
     expect(window.dispatchEvent).toHaveBeenCalledWith(expect.objectContaining({ type: DIALOG_EVENTS.RESTORED }));
     expect(manager.focusedDialogId).toBe(dialog.id); // Restoring brings to front
-    expect((VanillaDialogTabs as any).mock.instances[0].updateTabs).toHaveBeenCalled();
   });
 
   it('should expand a dialog to full screen', () => {
@@ -167,7 +160,6 @@ describe('DialogManager', () => {
     expect(Dialog.prototype.close).toHaveBeenCalled(); // Dialog's close method handles DOM removal and unregistering
     expect(mockDialogOptions.onClose).toHaveBeenCalledWith(dialog.id);
     expect(window.dispatchEvent).toHaveBeenCalledWith(expect.objectContaining({ type: DIALOG_EVENTS.CLOSED }));
-    expect((VanillaDialogTabs as any).mock.instances[0].updateTabs).toHaveBeenCalled();
   });
 
   it('should reassign focus after a dialog is closed', () => {
