@@ -69,6 +69,14 @@ const Documentation: React.FC = () => {
                   // &#125;
                 </code>
               </pre>
+
+              <Separator className="my-6" />
+
+              <h3 className="text-2xl font-medium mb-4 text-gray-800 dark:text-gray-200">Gestion du Mode Sombre</h3>
+              <p className="mb-4 text-gray-700 dark:text-gray-300">
+                Le thème de l'application (clair ou sombre) est géré en ajoutant la classe <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">light</code> ou <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">dark</code> directement à la balise <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">&lt;html&gt;</code> de votre document.
+                Cela permet à Tailwind CSS d'appliquer les styles conditionnels définis avec le préfixe <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">dark:</code>.
+              </p>
             </CardContent>
           </Card>
         </section>
